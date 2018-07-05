@@ -3,8 +3,7 @@ const toRadians = (degree) => degree * (Math.PI / 180);
 const toDegree = (radians) => radians * (180 / Math.PI);
 
 
-const roundNumber = (number) => number.toFixed(5)
-
+const roundNumber = (number) => number.toFixed(5);
 // decimals = decimals || 5;
 // return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
 
