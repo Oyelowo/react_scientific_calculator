@@ -5,180 +5,180 @@ class CalculatorContainer extends Component {
     state = {
         calculatorKeysArray: [
             {
-                name: 'COS',
+                inputValue: 'COS',
                 id: 'cos',
                 buttonColor: 'black',
-                value: 'cos'
+                inputOperator: 'cos'
             }, {
-                name: 'TAN',
+                inputValue: 'TAN',
                 id: 'tan',
                 buttonColor: 'black',
-                value: 'tan'
+                inputOperator: 'tan'
             }, {
-                name: 'SIN',
+                inputValue: 'SIN',
                 id: 'sin',
                 buttonColor: 'black',
-                value: 'sin'
+                inputOperator: 'sin'
             }, {
-                name: '(-)',
+                inputValue: '(-)',
                 id: 'plusOrMinus',
                 buttonColor: 'black',
-                value: '-'
+                inputOperator: '-'
             }, {
-                name: 'ABS',
+                inputValue: 'ABS',
                 id: 'abs',
                 buttonColor: 'black',
-                value: 'abs'
+                inputOperator: 'abs'
             }, {
-                name: '√',
+                inputValue: '√',
                 id: 'squareRoot',
                 buttonColor: 'black',
-                value: '√'
+                inputOperator: '√'
             }, {
-                name: 'SQR',
+                inputValue: 'SQR',
                 id: 'square',
                 buttonColor: 'black',
-                value: '^2'
+                inputOperator: '^2'
             }, {
-                name: '^',
+                inputValue: '^',
                 id: 'raiseToPower',
                 buttonColor: 'black',
-                value: '**'
+                inputOperator: '**'
             }, {
-                name: 'LOG',
+                inputValue: 'LOG',
                 id: 'log',
                 buttonColor: 'black',
-                value: 'log'
+                inputOperator: 'log'
             }, {
-                name: 'ln',
+                inputValue: 'ln',
                 id: 'ln',
                 buttonColor: 'black',
-                value: 'ln'
+                inputOperator: 'ln'
             }, {
-                name: 'CLR',
+                inputValue: 'CLR',
                 id: 'clr',
                 buttonColor: 'black',
-                value: 'clr'
+                inputOperator: 'clr'
             }, {
-                name: '(',
+                inputValue: '(',
                 id: 'openParanthesis',
                 buttonColor: 'black',
-                value: '('
+                inputOperator: '('
             }, {
-                name: ')',
+                inputValue: ')',
                 id: 'closedParanthesis',
                 buttonColor: 'black',
-                value: ')'
+                inputOperator: ')'
             }, {
-                name: 'M+',
+                inputValue: 'M+',
                 id: 'memory',
                 buttonColor: 'black',
-                value: 'M+',
+                inputOperator: 'M+'
             }, {
-                name: 'MOD',
+                inputValue: 'MOD',
                 id: 'modulus',
                 buttonColor: 'black',
-                value: '%'
+                inputOperator: '%'
             }, {
-                name: '7',
+                inputValue: '7',
                 id: '7',
                 buttonColor: 'grey',
-                value: '7'
+                inputOperator: '7'
             }, {
-                name: '8',
+                inputValue: '8',
                 id: '8',
                 buttonColor: 'grey',
-                value: '8'
+                inputOperator: '8'
             }, {
-                name: '9',
+                inputValue: '9',
                 id: '9',
                 buttonColor: 'grey',
-                value: '9'
+                inputOperator: '9'
             }, {
-                name: 'DEL',
+                inputValue: 'DEL',
                 id: 'del',
                 buttonColor: 'red',
-                value: 'del'
+                inputOperator: 'del'
             }, {
-                name: 'EXIT',
+                inputValue: 'EXIT',
                 id: 'exit',
                 buttonColor: 'red',
-                value: 'exit'
+                inputOperator: 'exit'
             }, {
-                name: '4',
+                inputValue: '4',
                 id: '4',
                 buttonColor: 'grey',
-                value: '4'
+                inputOperator: '4'
             }, {
-                name: '5',
+                inputValue: '5',
                 id: '5',
                 buttonColor: 'grey',
-                value: '5'
+                inputOperator: '5'
             }, {
-                name: '6',
+                inputValue: '6',
                 id: '6',
                 buttonColor: 'grey',
-                value: '6' 
+                inputOperator: '6'
             }, {
-                name: 'X',
+                inputValue: 'X',
                 id: 'multiply',
                 buttonColor: 'grey',
-                value: '*'
+                inputOperator: '*'
             }, {
-                name: '/',
+                inputValue: '/',
                 id: 'divide',
                 buttonColor: 'grey',
-                value: '/'
+                inputOperator: '/'
             }, {
-                name: '1',
+                inputValue: '1',
                 id: '1',
                 buttonColor: 'grey',
-                value: '1'
+                inputOperator: '1'
             }, {
-                name: '2',
+                inputValue: '2',
                 id: '2',
                 buttonColor: 'grey',
-                value: '2'
+                inputOperator: '2'
             }, {
-                name: '3',
+                inputValue: '3',
                 id: '3',
                 buttonColor: 'grey',
-                value: '3'
+                inputOperator: '3'
             }, {
-                name: '+',
+                inputValue: '+',
                 id: 'add',
                 buttonColor: 'grey',
-                value: '+'
+                inputOperator: '+'
             }, {
-                name: '-',
+                inputValue: '-',
                 id: 'subtract',
                 buttonColor: 'grey',
-                value: '-'
+                inputOperator: '-'
             }, {
-                name: '0',
+                inputValue: '0',
                 id: '0',
                 buttonColor: 'grey',
-                value: '0'
+                inputOperator: '0'
             }, {
-                name: '.',
+                inputValue: '.',
                 id: 'decimal',
                 buttonColor: 'grey',
-                value: '.'
+                inputOperator: '.'
             }, {
-                name: 'EXP',
+                inputValue: 'EXP',
                 id: 'exponential',
                 buttonColor: 'grey',
-                value: 'exp'
+                inputOperator: 'exp'
             }, {
-                name: 'Pi',
+                inputValue: 'Pi',
                 id: 'pi',
                 buttonColor: 'grey',
-                value: 'pi'
+                inputOperator: Math.PI
             }, {
-                name: '=',
+                inputValue: '=',
                 id: 'equalTo',
                 buttonColor: 'grey',
-                value: '='
+                inputOperator: '='
             }
 
         ],
@@ -189,46 +189,47 @@ class CalculatorContainer extends Component {
 
     isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
 
-
-inputValueHandler = (event) => {
-    let {inputValue} = this.state
-    const OPERATORS = /[+-/*^]/;
-    if (this.isNumber(event.target.value) || OPERATORS.test(event.target.value)) {
-        this.setState({
-            inputValue: inputValue + event.target.value
-        })
-    } else if(event.target.value == '=') {
-        this.setState({inputValue: eval(inputValue)})
+    inputValueHandler = (event) => {
+        let {inputValue} = this.state
+        const OPERATORS = /[+-/*^]/;
+        if (this.isNumber(event.target.value) || OPERATORS.test(event.target.name)) {
+            this.setState({
+                inputValue: inputValue + event.target.name
+            })
+        } else if (event.target.value == '=') {
+            this.setState({
+                inputValue: eval(inputValue)
+            })
+        } else if (event.target.value == 'pi') {
+            this.setState({inputValue: Math.PI})
+        }
     }
-    else if(event.target.value== 'pi'){
-        this.setState({inputValue: Math.PI})
+
+    render() {
+        const {calculatorKeysArray} = this.state;
+
+        let calculatorKeys = calculatorKeysArray.map((calcKey) => (
+            <span key={calcKey.id}><input
+                onClick={this.inputValueHandler}
+                className={`button ${calcKey.buttonColor}`}
+                type="button"
+                name={calcKey.inputOperator}
+                value={calcKey.ineputValue}/></span>
+        ));
+
+        return (
+            <div className='container'>
+                <div className='calculatorScreen'><input
+                    type="text"
+                    size="20"
+                    id="screen"
+                    value={this.state.inputValue}
+                    readOnly/></div>
+                <div id='buttons'>{calculatorKeys}</div>
+            </div>
+
+        );
     }
-}
-
-render() {
-    const {calculatorKeysArray} = this.state;
-
-    let calculatorKeys = calculatorKeysArray.map((calcKey) => (
-        <span key={calcKey.id}><input
-            onClick={this.inputValueHandler}
-            className={`button ${calcKey.buttonColor}`}
-            type="button"
-            value={calcKey.value}/></span>
-    ));
-
-    return (
-        <div className='container'>
-            <div className='calculatorScreen'><input
-                type="text"
-                size="20"
-                id="screen"
-                value={this.state.inputValue}
-                readOnly/></div>
-            <div id='buttons'>{calculatorKeys}</div>
-        </div>
-
-    );
-}
 }
 
 export default CalculatorContainer;
