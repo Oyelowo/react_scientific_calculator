@@ -31,15 +31,46 @@
 }
 
 #buttons {
+    position: relative;
+    top: 20px;
+    left: 15px;
     /* width: 250px; */
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     /* grid-gap: 20px; */
     /* margin: auto; */
     /* margin-top: 20vh; */
-    /* justify-items: center; */
+    justify-items: center;
     border: 1px solid red;
     box-sizing: border-box;
+}
+
+.button {
+    width: 40px;
+    height: 30px;
+    border: none;
+    border-radius: 7px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.button.black {
+    color: white;
+    background-color: black;
+    border-bottom: 2px solid #647489;
+    border-top: 2px solid #000;
+}
+
+.button.grey {
+    color: white;
+    background-color: #647489;
+    border-bottom: 2px solid #647489;
+}
+
+.button.red {
+    color: white;
+    background-color: red;
+    border-bottom: 2px solid #647489;
 }
 
 .calculatorInput {

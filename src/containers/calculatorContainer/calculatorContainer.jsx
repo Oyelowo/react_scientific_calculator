@@ -141,10 +141,6 @@ class CalculatorContainer extends Component {
                 id: 'pi',
                 buttonColor: 'grey'
             }, {
-                name: 'ANS',
-                id: 'ans',
-                buttonColor: 'grey'
-            }, {
                 name: '=',
                 id: 'equalTo',
                 buttonColor: 'grey'
@@ -156,10 +152,10 @@ class CalculatorContainer extends Component {
         const {calculatorKeysArray} = this.state;
 
         let calculatorKeys = calculatorKeysArray.map((calcKey, i, arr) => {
-            console.log(calcKey.buttonColor)
+           
             return (
                 <span key={calcKey.id}><input
-                    className={`calculatorInput ${calcKey.buttonColor}`}
+                    className={`button ${calcKey.buttonColor}`}
                     type="button"
                     value={calcKey.name}/></span>
             )
