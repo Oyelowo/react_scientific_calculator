@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
+import { MathInDegree } from '../../utility/utility';
+
 
 class CalculatorContainer extends Component {
     state = {
@@ -170,7 +172,7 @@ class CalculatorContainer extends Component {
                 buttonColor: 'grey',
                 inputOperator: 'exp'
             }, {
-                inputValue: 'Pi',
+                inputValue: 'PI',
                 id: 'pi',
                 buttonColor: 'grey',
                 inputOperator: Math.PI
@@ -190,18 +192,32 @@ class CalculatorContainer extends Component {
     isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
 
     inputValueHandler = (event) => {
-        let {inputValue} = this.state
-        const OPERATORS = /[+-/*^]/;
-        if (this.isNumber(event.target.value) || OPERATORS.test(event.target.name)) {
+        let {inputValue} = this.state;
+        // const OPERATORS = /[+-/*^.]/;
+        const OPERATORS = "+-/*^.()";
+        if (this.isNumber(event.target.value) || OPERATORS.includes(event.target.name)) {
             this.setState({
                 inputValue: inputValue + event.target.name
             })
-        } else if (event.target.value == '=') {
-            this.setState({
-                inputValue: eval(inputValue)
-            })
-        } else if (event.target.value == 'pi') {
-            this.setState({inputValue: Math.PI})
+            // if(inputValue.endsWith("+")){
+            //     this.setState({
+            //         inputValue: inputValue
+            //     })
+            // }
+        } 
+        else if (event.target.value == '=') {
+            this.setState({inputValue: eval(inputValue)})
+        } else if (event.target.value == 'PI') {
+            this.setState({inputValue:inputValue + (Math.PI).toFixed(2)})
+            if(inputValue.endsWith((Math.PI).toFixed(2))){
+                this.setState({inputValue: (Math.PI).toFixed(2)})
+            }
+        } else if(event.target.value == 'COS'){
+            this.setState({inputValue: Math.cos(inputValue)})
+        }  else if(event.target.value == 'SIN'){
+            this.setState({inputValue: Math.sin(inputValue)})
+        } else if(event.target.value == 'TAN'){
+            this.setState({inputValue: Math.tan(inputValue)})
         }
     }
 
@@ -214,8 +230,9 @@ class CalculatorContainer extends Component {
                 className={`button ${calcKey.buttonColor}`}
                 type="button"
                 name={calcKey.inputOperator}
-                value={calcKey.ineputValue}/></span>
+                value={calcKey.inputValue}/></span>
         ));
+        console.log(MathInDegree.sin(60))
 
         return (
             <div className='container'>
