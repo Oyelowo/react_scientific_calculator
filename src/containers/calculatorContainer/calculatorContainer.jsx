@@ -7,8 +7,8 @@ class CalculatorContainer extends Component {
     state = {
         calculatorKeysArray,
         inputValue: '',
-        filteredValue:'',
-        result: '',
+        filteredValue: '',
+        result: ''
     }
 
     isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
@@ -16,17 +16,21 @@ class CalculatorContainer extends Component {
     inputValueHandler = (event) => {
         let {inputValue} = this.state;
         const OPERATORSREG = /[+-/*^.]/;
-        let shownInputs = "+-/*^.()";
+        let shownInputs = "+-/*^.";
         const {value, name} = event.target
         if (this.isNumber(value) || OPERATORSREG.test(name)) {
             this.setState({
                 inputValue: inputValue + name
-            })  
+            })
             if (!this.isNumber(value) && shownInputs.includes(inputValue.slice(-1))) {
-            let check = inputValue.slice(0,-1) + name
-            this.setState({inputValue: check})
-        } }
-        else if (value === '=') {
+                let check = inputValue.slice(0, -1) + name
+                this.setState({inputValue: check})
+            }
+        } else if (value=='(' || value==')') {
+            this.setState({
+                inputValue: inputValue + value
+            })
+        } else if (value === '=') {
             // eslint-disable-next-line
             this.setState({inputValue: eval(inputValue)})
         } else if (value === 'PI') {
