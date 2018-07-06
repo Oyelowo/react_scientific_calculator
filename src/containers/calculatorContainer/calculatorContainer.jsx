@@ -7,56 +7,58 @@ class CalculatorContainer extends Component {
     state = {
         calculatorKeysArray,
         inputValue: '',
-        result: ''
+        filteredValue:'',
+        result: '',
     }
 
     isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
 
     inputValueHandler = (event) => {
         let {inputValue} = this.state;
-        const OPERATORSREG = /[+-/*^.]$/;
-        const OPERATORS = "+-/*^.()";
-        const {value, name} =  event.target
-        if ((this.isNumber(value) || OPERATORS.includes(name)) && !OPERATORSREG.test(inputValue)){
+        const OPERATORSREG = /[+-/*^.]/;
+        let shownInputs = "+-/*^.()";
+        const {value, name} = event.target
+        if (this.isNumber(value) || OPERATORSREG.test(name)) {
             this.setState({
                 inputValue: inputValue + name
-            })
-            // if (OPERATORSREG.test(inputValue)) {
-            //     this.setState({inputValue: inputValue})
-            // }
-        } else if (event.target.value === '=') {
+            })  
+            if (!this.isNumber(value) && shownInputs.includes(inputValue.slice(-1))) {
+            let check = inputValue.slice(0,-1) + name
+            this.setState({inputValue: check})
+        } }
+        else if (value === '=') {
             // eslint-disable-next-line
             this.setState({inputValue: eval(inputValue)})
-        } else if (event.target.value === 'PI') {
+        } else if (value === 'PI') {
             this.setState({
                 inputValue: inputValue + (Math.PI).toFixed(2)
             })
+
             if (inputValue.endsWith((Math.PI).toFixed(2))) {
                 this.setState({
                     inputValue: (Math.PI).toFixed(2)
                 })
             }
-        } else if (event.target.value === 'CLR') {
+        } else if (value === 'CLR') {
             this.setState({inputValue: ''})
-        } else if (event.target.value === 'COS') {
+        } else if (value === 'COS') {
             this.setState({
                 inputValue: MathInDegree.cos(inputValue)
             })
-        } else if (event.target.value === 'SIN') {
+        } else if (value === 'SIN') {
             this.setState({
                 inputValue: MathInDegree.sin(inputValue)
             })
-        } else if (event.target.value === 'TAN') {
+        } else if (value === 'TAN') {
             this.setState({
                 inputValue: MathInDegree.tan(inputValue)
             })
-        }
-        else if (event.target.value === 'DEL') {
-            let updatedValue = inputValue ? inputValue.slice(0, -1) : '0';
+        } else if (value === 'DEL') {
+            let updatedValue = inputValue.length > 2
+                ? inputValue.slice(0, -1)
+                : '0';
             console.log(updatedValue)
-            this.setState({
-                inputValue: updatedValue
-            })
+            this.setState({inputValue: updatedValue})
         }
     }
 
