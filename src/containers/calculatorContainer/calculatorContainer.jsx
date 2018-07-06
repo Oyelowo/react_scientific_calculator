@@ -18,15 +18,16 @@ class CalculatorContainer extends Component {
         const OPERATORSREG = /[+-/*^.]/;
         let shownInputs = "+-/*^.";
         const {value, name} = event.target
-        if (this.isNumber(value) || OPERATORSREG.test(name)) {
+        if (this.isNumber(value) || OPERATORSREG.test(name) || this.isNumber(inputValue)) {
+            let check = inputValue + name
             this.setState({
-                inputValue: inputValue + name
+                inputValue: check
             })
-            if (!this.isNumber(value) && shownInputs.includes(inputValue.slice(-1))) {
-                let check = inputValue.slice(0, -1) + name
+            if (OPERATORSREG.test(inputValue.toString().slice(-1)) && !this.isNumber(value)) {
+                check = inputValue.slice(0, -1) + name
                 this.setState({inputValue: check})
             }
-        } else if (value=='(' || value==')') {
+        } else if (value==='(' || value===')') {
             this.setState({
                 inputValue: inputValue + value
             })
