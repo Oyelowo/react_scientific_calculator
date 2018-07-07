@@ -1,3 +1,5 @@
+export const isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
+
 const toRadians = (degree) => degree * (Math.PI / 180);
 
 const toDegree = (radians) => radians * (180 / Math.PI);

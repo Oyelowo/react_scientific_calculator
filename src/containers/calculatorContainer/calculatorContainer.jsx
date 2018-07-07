@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {MathInDegree} from '../../utility/utility';
+import {MathInDegree, isNumber} from '../../utility/utility';
 import {calculatorKeysArray} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -11,8 +11,6 @@ class CalculatorContainer extends Component {
         result: ''
     }
 
-    isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
-
     inputValueHandler = (event) => {
         let {inputValue} = this.state;
         
@@ -20,13 +18,13 @@ class CalculatorContainer extends Component {
         const OPERATORSREG = /[+-/*^.]/;
         // let shownInputs = "+-/*^.";
         const {value, name} = event.target
-        if (this.isNumber(value) || OPERATORSREG.test(name) ) {
-            inputValue= inputValue=='0' && name!= '.'? '': inputValue;
-           let myName = name == '.' && inputValue.includes('.') ? '': name;
+        if (isNumber(value) || OPERATORSREG.test(name) ) {
+            inputValue= inputValue==='0' && name!== '.'? '': inputValue;
+           let myName = name === '.' && inputValue.includes('.') ? '': name;
             let check = inputValue + myName;
             this.setState({inputValue: check})
 
-            if (!this.isNumber(value) && OPERATORSREG.test(inputValue.toString().slice(-1))) {
+            if (!isNumber(value) && OPERATORSREG.test(inputValue.toString().slice(-1))) {
                 check = inputValue.slice(0, -1) + name
                 this.setState({inputValue: check})
             }
