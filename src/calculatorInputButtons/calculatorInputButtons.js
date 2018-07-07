@@ -93,7 +93,7 @@ export let calculatorKeysArray= [
         inputValue: 'DEL',
         id: 'del',
         buttonColor: 'red',
-        inputOperator: 'del'
+        inputOperator: 'DEL'
     }, {
         inputValue: 'EXIT',
         id: 'exit',
