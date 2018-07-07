@@ -13,14 +13,18 @@ class CalculatorContainer extends Component {
 
     inputValueHandler = (event) => {
         let {inputValue} = this.state;
-        
+
         // inputValue= inputValue.replace(/^0+(?!\.|$)/, '')
         const OPERATORSREG = /[+-/*^.]/;
         // let shownInputs = "+-/*^.";
         const {value, name} = event.target
-        if (isNumber(value) || OPERATORSREG.test(name) ) {
-            inputValue= inputValue==='0' && name!== '.'? '': inputValue;
-           let myName = name === '.' && inputValue.includes('.') ? '': name;
+        if (isNumber(value) || OPERATORSREG.test(name)) {
+            inputValue = inputValue === '0' && name !== '.'
+                ? ''
+                : inputValue;
+            let myName = name === '.' && inputValue.includes('.')
+                ? ''
+                : name;
             let check = inputValue + myName;
             this.setState({inputValue: check})
 
@@ -28,6 +32,7 @@ class CalculatorContainer extends Component {
                 check = inputValue.slice(0, -1) + name
                 this.setState({inputValue: check})
             }
+
         } else if (value === '(' || value === ')') {
             this.setState({
                 inputValue: inputValue + value
@@ -95,12 +100,10 @@ class CalculatorContainer extends Component {
 
         return (
             <div className='container'>
-                <div className='calculatorScreen'><input
-                    type="text"
-                    size="20"
-                    id="screen"
-                    value={this.state.inputValue}
-                    readOnly/></div>
+                <div className='calculatorScreen'>
+                    <div className='display'>{this.state.inputValue}</div>
+                </div>
+
                 <div id='buttons'>{calculatorKeys}</div>
             </div>
 
