@@ -6,7 +6,7 @@ import {calculatorKeysArray} from '../../calculatorInputButtons/calculatorInputB
 class CalculatorContainer extends Component {
     state = {
         calculatorKeysArray,
-        inputValue: '0',
+        inputValue: '',
         filteredValue: '',
         result: ''
     }
@@ -50,7 +50,7 @@ class CalculatorContainer extends Component {
                     inputValue: (Math.PI).toFixed(2)
                 })
             }
-        } else if (value === 'CLR') {
+        } else if (value === 'AC') {
             this.setState({inputValue: '0'})
         } else if (value === 'COS') {
             this.setState({
@@ -76,13 +76,19 @@ class CalculatorContainer extends Component {
             this.setState({
                 inputValue: MathInDegree.atan(inputValue)
             })
+        } else if (value === 'EXIT') {
+            this.setState({inputValue: ''})
         } else if (value === 'DEL') {
-            let updatedValue = inputValue.length > 2
-                ? inputValue
-                    .toString()
-                    .slice(0, -1)
-                : '0';
-            this.setState({inputValue: updatedValue})
+            let updatedValue
+            if (inputValue) {
+                updatedValue = inputValue.length > 2
+                    ? inputValue
+                        .toString()
+                        .slice(0, -1)
+                    : '0';
+                this.setState({inputValue: updatedValue})
+            }
+
         }
     }
 

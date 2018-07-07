@@ -50,10 +50,10 @@ export let calculatorKeysArray= [
         buttonColor: 'black',
         inputOperator: 'ln'
     }, {
-        inputValue: 'CLR',
-        id: 'clr',
+        inputValue: 'AC',
+        id: 'ac',
         buttonColor: 'black',
-        inputOperator: 'clr'
+        inputOperator: 'ac'
     }, {
         inputValue: '(',
         id: 'openParanthesis',
