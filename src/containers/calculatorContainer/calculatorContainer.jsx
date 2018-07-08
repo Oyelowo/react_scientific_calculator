@@ -18,7 +18,7 @@ class CalculatorContainer extends Component {
         const operatorsRegex = /[+-/*^.]/;
         // let shownInputs = "+-/*^.";
         const {value, name} = event.target
-        if (isNumber(value) || OPERATORSREG.test(name)) {
+        if (isNumber(value) || operatorsRegex.test(name)) {
             inputValue = inputValue === '0' && name !== '.'
                 ? ''
                 : inputValue;
