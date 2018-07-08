@@ -15,7 +15,7 @@ class CalculatorContainer extends Component {
         let {inputValue} = this.state;
 
         // inputValue= inputValue.replace(/^0+(?!\.|$)/, '')
-        const OPERATORSREG = /[+-/*^.]/;
+        const operatorsRegex = /[+-/*^.]/;
         // let shownInputs = "+-/*^.";
         const {value, name} = event.target
         if (isNumber(value) || OPERATORSREG.test(name)) {
@@ -28,7 +28,7 @@ class CalculatorContainer extends Component {
             let updatedInputValue = inputValue + myName;
             this.setState({inputValue: updatedInputValue})
 
-            if (!isNumber(value) && OPERATORSREG.test(inputValue.toString().slice(-1))) {
+            if (!isNumber(value) && operatorsRegex.test(inputValue.toString().slice(-1))) {
                 updatedInputValue = inputValue.slice(0, -1) + name
                 this.setState({inputValue: updatedInputValue})
             }
