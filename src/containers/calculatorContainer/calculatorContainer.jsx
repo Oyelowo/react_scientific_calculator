@@ -25,12 +25,12 @@ class CalculatorContainer extends Component {
             let myName = name === '.' && inputValue.includes('.')
                 ? ''
                 : name;
-            let check = inputValue + myName;
-            this.setState({inputValue: check})
+            let updatedInputValue = inputValue + myName;
+            this.setState({inputValue: updatedInputValue})
 
             if (!isNumber(value) && OPERATORSREG.test(inputValue.toString().slice(-1))) {
-                check = inputValue.slice(0, -1) + name
-                this.setState({inputValue: check})
+                updatedInputValue = inputValue.slice(0, -1) + name
+                this.setState({inputValue: updatedInputValue})
             }
 
         } else if (value === '(' || value === ')') {
