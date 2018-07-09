@@ -135,7 +135,7 @@ class CalculatorContainer extends Component {
                     <div className='display'>{this.state.inputValue}</div>
                 </div>
                 <div className='extraKeys'>
-                    <button onClick={this.toggleToHypHandler}>2nd</button>
+                    <button onClick={this.toggleHypHandler}>2nd</button>
                     <button onClick={this.toggleDegreeRadanHandler}>{this.state.trigIsDegree
                             ? 'DEG'
                             : 'RAD'}</button>
