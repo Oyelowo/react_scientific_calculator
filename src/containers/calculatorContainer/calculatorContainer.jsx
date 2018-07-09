@@ -8,11 +8,12 @@ class CalculatorContainer extends Component {
         calculatorKeysArray,
         calculatorKeysArrayInverse,
         inputValue: '',
-        trigsAreInverse: false
+        trigsAreInverse: false,
+        trigIsDegree: true
     }
 
     inputValueHandler = (event) => {
-        let {inputValue} = this.state;
+        let {inputValue, trigIsDegree} = this.state;
 
         // inputValue= inputValue.replace(/^0+(?!\.|$)/, '')
         const operatorsRegex = /[+-/*^.]/;
@@ -53,29 +54,38 @@ class CalculatorContainer extends Component {
         } else if (value === 'AC') {
             this.setState({inputValue: '0'})
         } else if (value === 'COS') {
-            this.setState({
-                inputValue: MathInDegree.cos(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.cos(inputValue)
+                : Math.cos(inputValue)
+            this.setState({inputValue: updatedInputValue})
+
         } else if (value === 'SIN') {
-            this.setState({
-                inputValue: MathInDegree.sin(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.sin(inputValue)
+                : Math.sin(inputValue)
+            this.setState({inputValue: updatedInputValue})
+
         } else if (value === 'TAN') {
-            this.setState({
-                inputValue: MathInDegree.tan(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.tan(inputValue)
+                : Math.tan(inputValue)
+            this.setState({inputValue: updatedInputValue})
+
         } else if (value === 'ACOS') {
-            this.setState({
-                inputValue: MathInDegree.acos(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.acos(inputValue)
+                : Math.acos(inputValue)
+            this.setState({inputValue: updatedInputValue})
         } else if (value === 'ASIN') {
-            this.setState({
-                inputValue: MathInDegree.asin(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.asin(inputValue)
+                : Math.asin(inputValue)
+            this.setState({inputValue: updatedInputValue})
         } else if (value === 'ATAN') {
-            this.setState({
-                inputValue: MathInDegree.atan(inputValue)
-            })
+            let updatedInputValue = trigIsDegree
+                ? MathInDegree.atan(inputValue)
+                : Math.atan(inputValue)
+            this.setState({inputValue: updatedInputValue})
         } else if (value === 'EXIT') {
             this.setState({inputValue: ''})
         } else if (value === 'DEL') {
@@ -93,7 +103,15 @@ class CalculatorContainer extends Component {
     }
 
     changeToHypHandler = () => {
-        this.setState({trigsAreInverse: !this.state.trigsAreInverse})
+        this.setState({
+            trigsAreInverse: !this.state.trigsAreInverse
+        })
+    }
+
+    toggleDegreeRadanHandler = () => {
+        this.setState({
+            trigIsDegree: !this.state.trigIsDegree
+        })
     }
 
     render() {
@@ -118,7 +136,9 @@ class CalculatorContainer extends Component {
                 </div>
                 <div className='extraKeys'>
                     <button onClick={this.changeToHypHandler}>2nd</button>
-                    <button>DEG</button>
+                    <button onClick={this.toggleDegreeRadanHandler}>{this.state.trigIsDegree
+                            ? 'DEG'
+                            : 'RAD'}</button>
                 </div>
 
                 <div id='buttons'>{calculatorKeys}</div>
