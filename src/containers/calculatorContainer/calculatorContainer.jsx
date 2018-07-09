@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
 import {MathInDegree, isNumber} from '../../utility/utility';
-import {calculatorKeysArray} from '../../calculatorInputButtons/calculatorInputButtons';
+import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
     state = {
         calculatorKeysArray,
+        calculatorKeysArrayInverse,
         inputValue: '',
-        filteredValue: '',
-        result: ''
+        trigsAreInverse: false
     }
 
     inputValueHandler = (event) => {
@@ -92,10 +92,17 @@ class CalculatorContainer extends Component {
         }
     }
 
-    render() {
-        const {calculatorKeysArray} = this.state;
+    changeToHypHandler = () => {
+        this.setState({trigsAreInverse: !this.state.trigsAreInverse})
+    }
 
-        let calculatorKeys = calculatorKeysArray.map((calcKey) => (
+    render() {
+        const {calculatorKeysArray, calculatorKeysArrayInverse, trigsAreInverse} = this.state;
+        let calculatorKeys = trigsAreInverse
+            ? calculatorKeysArrayInverse
+            : calculatorKeysArray
+
+        calculatorKeys = calculatorKeys.map((calcKey) => (
             <span key={calcKey.id}><input
                 onClick={this.inputValueHandler}
                 className={`button ${calcKey.buttonColor}`}
@@ -108,6 +115,10 @@ class CalculatorContainer extends Component {
             <div className='container'>
                 <div className='calculatorScreen'>
                     <div className='display'>{this.state.inputValue}</div>
+                </div>
+                <div className='extraKeys'>
+                    <button onClick={this.changeToHypHandler}>2nd</button>
+                    <button>DEG</button>
                 </div>
 
                 <div id='buttons'>{calculatorKeys}</div>

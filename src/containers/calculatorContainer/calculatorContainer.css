@@ -71,3 +71,8 @@
     background-color: red;
     border-bottom: 2px solid #647489;
 }
+
+.extraKeys{
+    position: relative;
+    top: 26px;
+}
