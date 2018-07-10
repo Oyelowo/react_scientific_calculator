@@ -208,6 +208,11 @@ class CalculatorContainer extends Component {
                     this.setState({displayedCharacters: factorial(displayedCharacters)});
                     break;
 
+                case 'EXP':
+                    this.setState({
+                        displayedCharacters: Math.exp(displayedCharacters)
+                    });
+                    break;
                 default:
                     this.state.displayedCharacters;
 
