@@ -39,8 +39,9 @@ class CalculatorContainer extends Component {
         let charStr = String.fromCharCode(charCode);
 
         const operatorsRegex = /[+-/*^.]/;
-        let {value} = event.target;
-        let eventTargetValue = value == 'X'? '*': value;
+        let {value: eventTargetValue} = event.target;
+        
+         eventTargetValue = eventTargetValue == 'X'? '*': eventTargetValue;
 
         // if (isNumber(charStr) || operatorsRegex.test(charStr)) {     inputValue =
         // inputValue === '0' && charStr !== '.'         ? ''         : inputValue; let
@@ -68,14 +69,14 @@ class CalculatorContainer extends Component {
                 this.setState({inputValue: updatedInputValue})
             }
 
-        } else if (value === '(' || value === ')') {
+        } else if (eventTargetValue === '(' || eventTargetValue === ')') {
             this.setState({
-                inputValue: inputValue + value
+                inputValue: inputValue + eventTargetValue
             })
-        } else if (value === '=') {
+        } else if (eventTargetValue === '=') {
             // eslint-disable-next-line
             this.setState({inputValue: eval(inputValue)})
-        } else if (value === 'PI') {
+        } else if (eventTargetValue === 'PI') {
             this.setState({
                 inputValue: inputValue + (Math.PI).toFixed(2)
             })
@@ -85,44 +86,44 @@ class CalculatorContainer extends Component {
                     inputValue: (Math.PI).toFixed(2)
                 })
             }
-        } else if (value === 'AC') {
+        } else if (eventTargetValue === 'AC') {
             this.setState({inputValue: '0'})
-        } else if (value === 'COS') {
+        } else if (eventTargetValue === 'COS') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.cos(inputValue)
                 : Math.cos(inputValue)
             this.setState({inputValue: updatedInputValue})
 
-        } else if (value === 'SIN') {
+        } else if (eventTargetValue === 'SIN') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.sin(inputValue)
                 : Math.sin(inputValue)
             this.setState({inputValue: updatedInputValue})
 
-        } else if (value === 'TAN') {
+        } else if (eventTargetValue === 'TAN') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.tan(inputValue)
                 : Math.tan(inputValue)
             this.setState({inputValue: updatedInputValue})
 
-        } else if (value === 'ACOS') {
+        } else if (eventTargetValue === 'ACOS') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.acos(inputValue)
                 : Math.acos(inputValue)
             this.setState({inputValue: updatedInputValue})
-        } else if (value === 'ASIN') {
+        } else if (eventTargetValue === 'ASIN') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.asin(inputValue)
                 : Math.asin(inputValue)
             this.setState({inputValue: updatedInputValue})
-        } else if (value === 'ATAN') {
+        } else if (eventTargetValue === 'ATAN') {
             let updatedInputValue = trigIsDegree
                 ? MathInDegree.atan(inputValue)
                 : Math.atan(inputValue)
             this.setState({inputValue: updatedInputValue})
-        } else if (value === 'EXIT') {
+        } else if (eventTargetValue === 'EXIT') {
             this.setState({inputValue: ''})
-        } else if (value === 'DEL') {
+        } else if (eventTargetValue === 'DEL') {
             let updatedValue
             if (inputValue) {
                 updatedValue = inputValue.length > 2
@@ -167,7 +168,7 @@ class CalculatorContainer extends Component {
             <div className='container'>
 
                 <div className='calculatorScreen'>
-                    <div className='display'>{this.state.inputValue}</div>
+        <div className='display'>{this.state.inputValue.toString().replace(/\*/g, 'X')}</div>
                 </div>
                 <div className='extraKeys'>
                     <button onClick={this.toggleHypHandler}>2nd</button>

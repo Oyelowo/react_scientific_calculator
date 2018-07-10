@@ -235,7 +235,7 @@ export let calculatorKeysArrayInverse = [{
         id: '6',
         buttonColor: 'grey'
     }, {
-        inputValue: 'X',
+        inputValue: 'x',
         id: 'multiply',
         buttonColor: 'grey'
     }, {
