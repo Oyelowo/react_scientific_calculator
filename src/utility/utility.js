@@ -1,5 +1,7 @@
 export const isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n)
 
+export const factorial = (n) => n < 0 ? 'Invalid' : n < 2 ? 1 : factorial(n - 1) * n;
+
 const toRadians = (degree) => degree * (Math.PI / 180);
 
 const toDegree = (radians) => radians * (180 / Math.PI);
