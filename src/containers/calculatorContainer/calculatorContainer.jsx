@@ -8,7 +8,7 @@ class CalculatorContainer extends Component {
         calculatorKeysArray,
         calculatorKeysArrayInverse,
         displayedCharacters: '',
-        keyboardValue: '',
+        btnChar: '',
         trigsAreInverse: false,
         trigIsDegree: true
     }
@@ -40,17 +40,15 @@ class CalculatorContainer extends Component {
 
         const operatorsRegex = /[+-/*^.]/;
         let {value: eventTargetValue} = event.target;
-        
-         eventTargetValue = eventTargetValue == 'X'? '*': eventTargetValue;
 
-        // if (isNumber(charStr) || operatorsRegex.test(charStr)) {     displayedCharacters =
-        // displayedCharacters === '0' && charStr !== '.'         ? ''         : displayedCharacters; let
-        // myCharStr = charStr === '.' && displayedCharacters.includes('.')         ? ''    :
-        // charStr;     let updatedDisplayedCharacters = displayedCharacters + myCharStr;
-        // this.setState({displayedCharacters: updatedDisplayedCharacters})     if (!isNumber(charStr) &&
-        // operatorsRegex.test(displayedCharacters.toString().slice(-1))) { updatedDisplayedCharacters =
-        // displayedCharacters.slice(0, -1) + charStr; this.setState({displayedCharacters:
-        // updatedDisplayedCharacters})     } } else
+        eventTargetValue = eventTargetValue == 'X'
+            ? '*'
+            : eventTargetValue;
+
+        if (event.keyCode) {
+            eventTargetValue = charStr
+        }
+        // this.setState({btnChar: eventTargetValue})
 
         if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
             // prevent multiple zeros at the beginning
@@ -58,7 +56,7 @@ class CalculatorContainer extends Component {
                 ? ''
                 : displayedCharacters;
 
-                // prevent adding multiple decimals at a time
+            // prevent adding multiple decimals at a time
             let newValue = eventTargetValue === '.' && displayedCharacters.includes('.')
                 ? ''
                 : eventTargetValue;
@@ -66,7 +64,7 @@ class CalculatorContainer extends Component {
             this.setState({displayedCharacters: updatedDisplayedCharacters})
 
             if (!isNumber(eventTargetValue) && operatorsRegex.test(displayedCharacters.toString().slice(-1))) {
-            
+
                 updatedDisplayedCharacters = displayedCharacters.slice(0, -1) + eventTargetValue;
 
                 this.setState({displayedCharacters: updatedDisplayedCharacters})
@@ -170,7 +168,11 @@ class CalculatorContainer extends Component {
             <div className='container'>
 
                 <div className='calculatorScreen'>
-        <div className='display'>{this.state.displayedCharacters.toString().replace(/\*/g, 'X')}</div>
+                    <div className='display'>{this
+                            .state
+                            .displayedCharacters
+                            .toString()
+                            .replace(/\*/g, 'X')}</div>
                 </div>
                 <div className='extraKeys'>
                     <button onClick={this.toggleHypHandler}>2nd</button>
