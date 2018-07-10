@@ -8,17 +8,56 @@ class CalculatorContainer extends Component {
         calculatorKeysArray,
         calculatorKeysArrayInverse,
         inputValue: '',
+        keyboardValue: '',
         trigsAreInverse: false,
         trigIsDegree: true
     }
 
+    componentDidMount() {
+        document.addEventListener('keypress', this.inputValueHandler)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keypress', this.inputValueHandler);
+    }
+
+    getKeyboardChar = (event) => {
+        // event = event || window.event; let charCode = event.keyCode || event.which;
+        // let charStr = String.fromCharCode(charCode); if (charStr == this) {
+        // this.inputValueHandler() } alert(charStr);
+    }
+
+    //   keyboardButton = (event) => {     // convert char to code     let
+    // codeFromChar = ('7').charCodeAt()     if (event.keyCode === codeFromChar) {
+    // this.inputValueHandler();     }   }
+
     inputValueHandler = (event) => {
         let {inputValue, trigIsDegree} = this.state;
+
+        event = event || window.event;
+        let charCode = event.keyCode || event.which;
+        let charStr = String.fromCharCode(charCode);
 
         // inputValue= inputValue.replace(/^0+(?!\.|$)/, '')
         const operatorsRegex = /[+-/*^.]/;
         // let shownInputs = "+-/*^.";
         const {value, name} = event.target
+
+        if (isNumber(charStr) || operatorsRegex.test(charStr)) {
+            inputValue = inputValue === '0' && charStr !== '.'
+                ? ''
+                : inputValue;
+            let myCharStr = charStr === '.' && inputValue.includes('.')
+                ? ''
+                : charStr;
+            let updatedInputValue = inputValue + myCharStr;
+            this.setState({inputValue: updatedInputValue})
+            if (!isNumber(charStr) && operatorsRegex.test(inputValue.toString().slice(-1))) {
+                updatedInputValue = inputValue.slice(0, -1) + charStr;
+                this.setState({inputValue: updatedInputValue})
+            }
+        } else 
+        
         if (isNumber(value) || operatorsRegex.test(name)) {
             inputValue = inputValue === '0' && name !== '.'
                 ? ''
@@ -30,7 +69,7 @@ class CalculatorContainer extends Component {
             this.setState({inputValue: updatedInputValue})
 
             if (!isNumber(value) && operatorsRegex.test(inputValue.toString().slice(-1))) {
-                updatedInputValue = inputValue.slice(0, -1) + name
+                updatedInputValue = inputValue.slice(0, -1) + name;
                 this.setState({inputValue: updatedInputValue})
             }
 
@@ -131,6 +170,7 @@ class CalculatorContainer extends Component {
 
         return (
             <div className='container'>
+
                 <div className='calculatorScreen'>
                     <div className='display'>{this.state.inputValue}</div>
                 </div>

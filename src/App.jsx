@@ -3,10 +3,8 @@ import './App.css';
 import CalculatorContainer from './containers/calculatorContainer/calculatorContainer';
 
 class App extends Component {
-
   render() {
-
-    return <CalculatorContainer />;
+    return <CalculatorContainer />
   }
 }
 
