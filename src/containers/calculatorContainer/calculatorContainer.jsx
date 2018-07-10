@@ -10,11 +10,12 @@ class CalculatorContainer extends Component {
         displayedCharacters: '',
         btnChar: '',
         trigsAreInverse: false,
-        trigIsDegree: true
+        trigIsDegree: true,
+        evaluated: false
     }
 
     componentDidMount() {
-        document.addEventListener('keypress', this.displayedCharactersHandler)
+        document.addEventListener('keypress', this.displayedCharactersHandler);
     }
 
     componentWillUnmount() {
@@ -26,17 +27,19 @@ class CalculatorContainer extends Component {
         let charCode = event.keyCode || event.which;
         let charStr = String.fromCharCode(charCode);
         return charStr;
-    }   
+    }
 
     displayedCharactersHandler = (event) => {
         let {displayedCharacters, trigIsDegree} = this.state;
-        const operatorsRegex = /[+-/*^.]/;
-        let {value: eventTargetValue} = event.target;
+        const operatorsRegex = /[+-/*.%]/;
+        let {value: eventTargetValue, id: eventTargetId} = event.target;
 
         // change X to * for evaluating multiplication
         eventTargetValue = eventTargetValue == 'X'
             ? '*'
-            : eventTargetValue;
+            : eventTargetValue == 'MOD'
+                ? '%'
+                : eventTargetValue;
 
         if (event.keyCode) {
             eventTargetValue = this.getBtnChar()
@@ -63,71 +66,148 @@ class CalculatorContainer extends Component {
                 this.setState({displayedCharacters: updatedDisplayedCharacters})
             }
 
-        } else if (eventTargetValue === '(' || eventTargetValue === ')') {
-            this.setState({
-                displayedCharacters: displayedCharacters + eventTargetValue
-            })
-        } else if (eventTargetValue === '=') {
-            // eslint-disable-next-line
-            this.setState({displayedCharacters: eval(displayedCharacters)})
-        } else if (eventTargetValue === 'PI') {
-            this.setState({
-                displayedCharacters: displayedCharacters + (Math.PI).toFixed(2)
-            })
+        } else {
+            switch (eventTargetValue) {
+                case 'AC':
+                    this.setState({displayedCharacters: '0'});
+                    break;
 
-            if (displayedCharacters.endsWith((Math.PI).toFixed(2))) {
-                this.setState({
-                    displayedCharacters: (Math.PI).toFixed(2)
-                })
+                case 'COS':
+                    let cosResult = trigIsDegree
+                        ? MathInDegree.cos(displayedCharacters)
+                        : Math.cos(displayedCharacters);
+                    this.setState({displayedCharacters: cosResult});
+                    break;
+
+                case 'SIN':
+                    let sinResult = trigIsDegree
+                        ? MathInDegree.sin(displayedCharacters)
+                        : Math.sin(displayedCharacters);
+                    this.setState({displayedCharacters: sinResult});
+                    break;
+
+                case 'TAN':
+                    let tanResult = trigIsDegree
+                        ? MathInDegree.tan(displayedCharacters)
+                        : Math.tan(displayedCharacters);
+                    this.setState({displayedCharacters: tanResult});
+                    break;
+
+                case 'ACOS':
+                    let acosResult = trigIsDegree
+                        ? MathInDegree.acos(displayedCharacters)
+                        : Math.acos(displayedCharacters);
+                    this.setState({displayedCharacters: acosResult});
+                    break;
+
+                case 'ASIN':
+                    let asinResult = trigIsDegree
+                        ? MathInDegree.asin(displayedCharacters)
+                        : Math.asin(displayedCharacters);
+                    this.setState({displayedCharacters: asinResult});
+                    break;
+
+                case 'ATAN':
+                    let atanResult = trigIsDegree
+                        ? MathInDegree.atan(displayedCharacters)
+                        : Math.atan(displayedCharacters);
+                    this.setState({displayedCharacters: atanResult});
+                    break;
+
+                case 'EXIT':
+                    this.setState({displayedCharacters: ''});
+                    break;
+
+                case 'DEL':
+                    let updatedValue;
+                    if (displayedCharacters) {
+                        updatedValue = displayedCharacters.length > 2
+                            ? displayedCharacters
+                                .toString()
+                                .slice(0, -1)
+                            : '0';
+                    }
+                    this.setState({displayedCharacters: updatedValue});
+                    break;
+
+                case '(':
+                case ')':
+                    this.setState({
+                        displayedCharacters: displayedCharacters + eventTargetValue
+                    });
+                    break;
+
+                case '=':
+                    // eslint-disable-next-line
+                    this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
+                    break;
+                case 'π':
+                    let pi = Math
+                        .PI
+                        .toFixed(2);
+                    if (/[\D]/.test(displayedCharacters.slice(-1))) {
+                        this.setState({
+                            displayedCharacters: displayedCharacters + pi.toString()
+                        });
+                    } else {
+                        this.setState({
+                            displayedCharacters: pi.toString()
+                        });
+                    };
+                    break;
+                case '±':
+                    this.setState({
+                        displayedCharacters: -displayedCharacters
+                    });
+                    break;
+                case 'ABS':
+                    this.setState({
+                        displayedCharacters: Math.abs(displayedCharacters)
+                    });
+                    break;
+
+                case '√':
+                    this.setState({
+                        displayedCharacters: Math.sqrt(displayedCharacters)
+                    });
+                    break;
+
+                case 'SQR':
+                    this.setState({
+                        displayedCharacters: Math.pow(displayedCharacters, 2)
+                    });
+                    break;
+
+                case '^':
+                    this.setState({
+                        displayedCharacters: displayedCharacters + '**'
+                    });
+                    break;
+
+                case 'LOG':
+                    this.setState({
+                        displayedCharacters: Math.log10(displayedCharacters)
+                    });
+                    break;
+
+                case 'In':
+                    let E = Math
+                        .E
+                        .toFixed(2)
+                        .toString();
+                    if (/\D$/.test(displayedCharacters)) {
+                        this.setState({
+                            displayedCharacters: displayedCharacters + E
+                        })
+                    } else if (displayedCharacters == '0') {
+                        this.setState({displayedCharacters: E})
+                    }
+                    break;
+
+                default:
+                    this.state.displayedCharacters;
+
             }
-        } else if (eventTargetValue === 'AC') {
-            this.setState({displayedCharacters: '0'})
-        } else if (eventTargetValue === 'COS') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.cos(displayedCharacters)
-                : Math.cos(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-
-        } else if (eventTargetValue === 'SIN') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.sin(displayedCharacters)
-                : Math.sin(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-
-        } else if (eventTargetValue === 'TAN') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.tan(displayedCharacters)
-                : Math.tan(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-
-        } else if (eventTargetValue === 'ACOS') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.acos(displayedCharacters)
-                : Math.acos(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-        } else if (eventTargetValue === 'ASIN') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.asin(displayedCharacters)
-                : Math.asin(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-        } else if (eventTargetValue === 'ATAN') {
-            let updatedDisplayedCharacters = trigIsDegree
-                ? MathInDegree.atan(displayedCharacters)
-                : Math.atan(displayedCharacters)
-            this.setState({displayedCharacters: updatedDisplayedCharacters})
-        } else if (eventTargetValue === 'EXIT') {
-            this.setState({displayedCharacters: ''})
-        } else if (eventTargetValue === 'DEL') {
-            let updatedValue
-            if (displayedCharacters) {
-                updatedValue = displayedCharacters.length > 2
-                    ? displayedCharacters
-                        .toString()
-                        .slice(0, -1)
-                    : '0';
-                this.setState({displayedCharacters: updatedValue})
-            }
-
         }
     }
 
@@ -165,7 +245,9 @@ class CalculatorContainer extends Component {
                             .state
                             .displayedCharacters
                             .toString()
-                            .replace(/\*/g, 'X')}</div>
+                            .replace(/\*/g, '×')
+                            .replace(/-/g, '−')
+                            .replace(/××/g, '^')}</div>
                 </div>
                 <div className='extraKeys'>
                     <button onClick={this.toggleHypHandler}>2nd</button>

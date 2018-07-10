@@ -11,7 +11,7 @@ export let calculatorKeysArray = [{
         id: 'sin',
         buttonColor: 'black'
     }, {
-        btnCharacter: '(-)',
+        btnCharacter: '±',
         id: 'plusOrMinus',
         buttonColor: 'black'
     }, {
@@ -35,8 +35,8 @@ export let calculatorKeysArray = [{
         id: 'log',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'ln',
-        id: 'ln',
+        btnCharacter: 'In',
+        id: 'In',
         buttonColor: 'black'
     }, {
         btnCharacter: 'AC',
@@ -131,7 +131,7 @@ export let calculatorKeysArray = [{
         id: 'exponential',
         buttonColor: 'grey'
     }, {
-        btnCharacter: 'PI',
+        btnCharacter: 'π',
         id: 'pi',
         buttonColor: 'grey'
     }, {
@@ -155,7 +155,7 @@ export let calculatorKeysArrayInverse = [{
         id: 'asin',
         buttonColor: 'black'
     }, {
-        btnCharacter: '(-)',
+        btnCharacter: '±',
         id: 'plusOrMinus',
         buttonColor: 'black'
     }, {
@@ -179,8 +179,8 @@ export let calculatorKeysArrayInverse = [{
         id: 'log',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'ln',
-        id: 'ln',
+        btnCharacter: 'In',
+        id: 'In',
         buttonColor: 'black'
     }, {
         btnCharacter: 'AC',
@@ -235,7 +235,7 @@ export let calculatorKeysArrayInverse = [{
         id: '6',
         buttonColor: 'grey'
     }, {
-        btnCharacter: 'x',
+        btnCharacter: 'X',
         id: 'multiply',
         buttonColor: 'grey'
     }, {
@@ -275,7 +275,7 @@ export let calculatorKeysArrayInverse = [{
         id: 'exponential',
         buttonColor: 'grey'
     }, {
-        btnCharacter: 'PI',
+        btnCharacter: 'π',
         id: 'pi',
         buttonColor: 'grey'
     }, {
