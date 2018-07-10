@@ -21,32 +21,25 @@ class CalculatorContainer extends Component {
         document.removeEventListener('keypress', this.displayedCharactersHandler);
     }
 
-    getKeyboardChar = (event) => {
-        // event = event || window.event; let charCode = event.keyCode || event.which;
-        // let charStr = String.fromCharCode(charCode); if (charStr == this) {
-        // this.displayedCharactersHandler() } alert(charStr);
-    }
-
-    //   keyboardButton = (event) => {     // convert char to code     let
-    // codeFromChar = ('7').charCodeAt()     if (event.keyCode === codeFromChar) {
-    // this.displayedCharactersHandler();     }   }
-
-    displayedCharactersHandler = (event) => {
-        let {displayedCharacters, trigIsDegree} = this.state;
-
+    getBtnChar = (event) => {
         event = event || window.event;
         let charCode = event.keyCode || event.which;
         let charStr = String.fromCharCode(charCode);
+        return charStr;
+    }   
 
+    displayedCharactersHandler = (event) => {
+        let {displayedCharacters, trigIsDegree} = this.state;
         const operatorsRegex = /[+-/*^.]/;
         let {value: eventTargetValue} = event.target;
 
+        // change X to * for evaluating multiplication
         eventTargetValue = eventTargetValue == 'X'
             ? '*'
             : eventTargetValue;
 
         if (event.keyCode) {
-            eventTargetValue = charStr
+            eventTargetValue = this.getBtnChar()
         }
         // this.setState({btnChar: eventTargetValue})
 
