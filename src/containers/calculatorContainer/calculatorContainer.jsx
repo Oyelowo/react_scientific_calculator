@@ -38,38 +38,33 @@ class CalculatorContainer extends Component {
         let charCode = event.keyCode || event.which;
         let charStr = String.fromCharCode(charCode);
 
-        // inputValue= inputValue.replace(/^0+(?!\.|$)/, '')
         const operatorsRegex = /[+-/*^.]/;
-        // let shownInputs = "+-/*^.";
-        const {value, name} = event.target
+        let {value} = event.target;
+        let eventTargetValue = value == 'X'? '*': value;
 
-        if (isNumber(charStr) || operatorsRegex.test(charStr)) {
-            inputValue = inputValue === '0' && charStr !== '.'
+        // if (isNumber(charStr) || operatorsRegex.test(charStr)) {     inputValue =
+        // inputValue === '0' && charStr !== '.'         ? ''         : inputValue; let
+        // myCharStr = charStr === '.' && inputValue.includes('.')         ? ''    :
+        // charStr;     let updatedInputValue = inputValue + myCharStr;
+        // this.setState({inputValue: updatedInputValue})     if (!isNumber(charStr) &&
+        // operatorsRegex.test(inputValue.toString().slice(-1))) { updatedInputValue =
+        // inputValue.slice(0, -1) + charStr; this.setState({inputValue:
+        // updatedInputValue})     } } else
+
+        if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
+            inputValue = inputValue === '0' && eventTargetValue !== '.'
                 ? ''
                 : inputValue;
-            let myCharStr = charStr === '.' && inputValue.includes('.')
+            let myValue = eventTargetValue === '.' && inputValue.includes('.')
                 ? ''
-                : charStr;
-            let updatedInputValue = inputValue + myCharStr;
-            this.setState({inputValue: updatedInputValue})
-            if (!isNumber(charStr) && operatorsRegex.test(inputValue.toString().slice(-1))) {
-                updatedInputValue = inputValue.slice(0, -1) + charStr;
-                this.setState({inputValue: updatedInputValue})
-            }
-        } else 
-        
-        if (isNumber(value) || operatorsRegex.test(name)) {
-            inputValue = inputValue === '0' && name !== '.'
-                ? ''
-                : inputValue;
-            let myName = name === '.' && inputValue.includes('.')
-                ? ''
-                : name;
-            let updatedInputValue = inputValue + myName;
+                : eventTargetValue;
+            let updatedInputValue = inputValue + myValue;
             this.setState({inputValue: updatedInputValue})
 
-            if (!isNumber(value) && operatorsRegex.test(inputValue.toString().slice(-1))) {
-                updatedInputValue = inputValue.slice(0, -1) + name;
+            if (!isNumber(eventTargetValue) && operatorsRegex.test(inputValue.toString().slice(-1))) {
+            
+                updatedInputValue = inputValue.slice(0, -1) + eventTargetValue;
+
                 this.setState({inputValue: updatedInputValue})
             }
 

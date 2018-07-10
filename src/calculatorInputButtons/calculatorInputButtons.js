@@ -1,178 +1,143 @@
 export let calculatorKeysArray = [{
         inputValue: 'COS',
         id: 'cos',
-        buttonColor: 'black',
-        inputOperator: 'cos'
+        buttonColor: 'black'
     }, {
         inputValue: 'TAN',
         id: 'tan',
-        buttonColor: 'black',
-        inputOperator: 'tan'
+        buttonColor: 'black'
     }, {
         inputValue: 'SIN',
         id: 'sin',
-        buttonColor: 'black',
-        inputOperator: 'sin'
+        buttonColor: 'black'
     }, {
         inputValue: '(-)',
         id: 'plusOrMinus',
-        buttonColor: 'black',
-        inputOperator: '-'
+        buttonColor: 'black'
     }, {
         inputValue: 'ABS',
         id: 'abs',
-        buttonColor: 'black',
-        inputOperator: 'abs'
+        buttonColor: 'black'
     }, {
         inputValue: '√',
         id: 'squareRoot',
-        buttonColor: 'black',
-        inputOperator: '√'
+        buttonColor: 'black'
     }, {
         inputValue: 'SQR',
         id: 'square',
-        buttonColor: 'black',
-        inputOperator: '^2'
+        buttonColor: 'black'
     }, {
         inputValue: '^',
         id: 'raiseToPower',
-        buttonColor: 'black',
-        inputOperator: '**'
+        buttonColor: 'black'
     }, {
         inputValue: 'LOG',
         id: 'log',
-        buttonColor: 'black',
-        inputOperator: 'log'
+        buttonColor: 'black'
     }, {
         inputValue: 'ln',
         id: 'ln',
-        buttonColor: 'black',
-        inputOperator: 'ln'
+        buttonColor: 'black'
     }, {
         inputValue: 'AC',
         id: 'ac',
-        buttonColor: 'black',
-        inputOperator: 'ac'
+        buttonColor: 'black'
     }, {
         inputValue: '(',
         id: 'openParanthesis',
-        buttonColor: 'black',
-        inputOperator: '('
+        buttonColor: 'black'
     }, {
         inputValue: ')',
         id: 'closedParanthesis',
-        buttonColor: 'black',
-        inputOperator: ')'
+        buttonColor: 'black'
     }, {
         inputValue: 'M+',
         id: 'memory',
-        buttonColor: 'black',
-        inputOperator: 'M+'
+        buttonColor: 'black'
     }, {
         inputValue: 'MOD',
         id: 'modulus',
-        buttonColor: 'black',
-        inputOperator: '%'
+        buttonColor: 'black'
     }, {
         inputValue: '7',
         id: '7',
-        buttonColor: 'grey',
-        inputOperator: '7'
+        buttonColor: 'grey'
     }, {
         inputValue: '8',
         id: '8',
-        buttonColor: 'grey',
-        inputOperator: '8'
+        buttonColor: 'grey'
     }, {
         inputValue: '9',
         id: '9',
-        buttonColor: 'grey',
-        inputOperator: '9'
+        buttonColor: 'grey'
     }, {
         inputValue: 'DEL',
         id: 'del',
-        buttonColor: 'red',
-        inputOperator: 'DEL'
+        buttonColor: 'red'
     }, {
         inputValue: 'EXIT',
         id: 'exit',
-        buttonColor: 'red',
-        inputOperator: 'exit'
+        buttonColor: 'red'
     }, {
         inputValue: '4',
         id: '4',
-        buttonColor: 'grey',
-        inputOperator: '4'
+        buttonColor: 'grey'
     }, {
         inputValue: '5',
         id: '5',
-        buttonColor: 'grey',
-        inputOperator: '5'
+        buttonColor: 'grey'
     }, {
         inputValue: '6',
         id: '6',
-        buttonColor: 'grey',
-        inputOperator: '6'
+        buttonColor: 'grey'
     }, {
         inputValue: 'X',
         id: 'multiply',
-        buttonColor: 'grey',
-        inputOperator: '*'
+        buttonColor: 'grey'
     }, {
         inputValue: '/',
         id: 'divide',
-        buttonColor: 'grey',
-        inputOperator: '/'
+        buttonColor: 'grey'
     }, {
         inputValue: '1',
         id: '1',
-        buttonColor: 'grey',
-        inputOperator: '1'
+        buttonColor: 'grey'
     }, {
         inputValue: '2',
         id: '2',
-        buttonColor: 'grey',
-        inputOperator: '2'
+        buttonColor: 'grey'
     }, {
         inputValue: '3',
         id: '3',
-        buttonColor: 'grey',
-        inputOperator: '3'
+        buttonColor: 'grey'
     }, {
         inputValue: '+',
         id: 'add',
-        buttonColor: 'grey',
-        inputOperator: '+'
+        buttonColor: 'grey'
     }, {
         inputValue: '-',
         id: 'subtract',
-        buttonColor: 'grey',
-        inputOperator: '-'
+        buttonColor: 'grey'
     }, {
         inputValue: '0',
         id: '0',
-        buttonColor: 'grey',
-        inputOperator: '0'
+        buttonColor: 'grey'
     }, {
         inputValue: '.',
         id: 'decimal',
-        buttonColor: 'grey',
-        inputOperator: '.'
+        buttonColor: 'grey'
     }, {
         inputValue: 'EXP',
         id: 'exponential',
-        buttonColor: 'grey',
-        inputOperator: 'exp'
+        buttonColor: 'grey'
     }, {
         inputValue: 'PI',
         id: 'pi',
-        buttonColor: 'grey',
-        inputOperator: Math.PI
+        buttonColor: 'grey'
     }, {
         inputValue: '=',
         id: 'equalTo',
-        buttonColor: 'grey',
-        inputOperator: '='
+        buttonColor: 'grey'
     }
 
 ];
@@ -180,178 +145,143 @@ export let calculatorKeysArray = [{
 export let calculatorKeysArrayInverse = [{
         inputValue: 'ACOS',
         id: 'acos',
-        buttonColor: 'black',
-        inputOperator: 'acos'
+        buttonColor: 'black'
     }, {
         inputValue: 'ATAN',
         id: 'atan',
-        buttonColor: 'black',
-        inputOperator: 'atan'
+        buttonColor: 'black'
     }, {
         inputValue: 'ASIN',
         id: 'asin',
-        buttonColor: 'black',
-        inputOperator: 'asin'
+        buttonColor: 'black'
     }, {
         inputValue: '(-)',
         id: 'plusOrMinus',
-        buttonColor: 'black',
-        inputOperator: '-'
+        buttonColor: 'black'
     }, {
         inputValue: 'ABS',
         id: 'abs',
-        buttonColor: 'black',
-        inputOperator: 'abs'
+        buttonColor: 'black'
     }, {
         inputValue: '√',
         id: 'squareRoot',
-        buttonColor: 'black',
-        inputOperator: '√'
+        buttonColor: 'black'
     }, {
         inputValue: 'SQR',
         id: 'square',
-        buttonColor: 'black',
-        inputOperator: '^2'
+        buttonColor: 'black'
     }, {
         inputValue: '^',
         id: 'raiseToPower',
-        buttonColor: 'black',
-        inputOperator: '**'
+        buttonColor: 'black'
     }, {
         inputValue: 'LOG',
         id: 'log',
-        buttonColor: 'black',
-        inputOperator: 'log'
+        buttonColor: 'black'
     }, {
         inputValue: 'ln',
         id: 'ln',
-        buttonColor: 'black',
-        inputOperator: 'ln'
+        buttonColor: 'black'
     }, {
         inputValue: 'AC',
         id: 'ac',
-        buttonColor: 'black',
-        inputOperator: 'ac'
+        buttonColor: 'black'
     }, {
         inputValue: '(',
         id: 'openParanthesis',
-        buttonColor: 'black',
-        inputOperator: '('
+        buttonColor: 'black'
     }, {
         inputValue: ')',
         id: 'closedParanthesis',
-        buttonColor: 'black',
-        inputOperator: ')'
+        buttonColor: 'black'
     }, {
         inputValue: 'M+',
         id: 'memory',
-        buttonColor: 'black',
-        inputOperator: 'M+'
+        buttonColor: 'black'
     }, {
         inputValue: 'MOD',
         id: 'modulus',
-        buttonColor: 'black',
-        inputOperator: '%'
+        buttonColor: 'black'
     }, {
         inputValue: '7',
         id: '7',
-        buttonColor: 'grey',
-        inputOperator: '7'
+        buttonColor: 'grey'
     }, {
         inputValue: '8',
         id: '8',
-        buttonColor: 'grey',
-        inputOperator: '8'
+        buttonColor: 'grey'
     }, {
         inputValue: '9',
         id: '9',
-        buttonColor: 'grey',
-        inputOperator: '9'
+        buttonColor: 'grey'
     }, {
         inputValue: 'DEL',
         id: 'del',
-        buttonColor: 'red',
-        inputOperator: 'DEL'
+        buttonColor: 'red'
     }, {
         inputValue: 'EXIT',
         id: 'exit',
-        buttonColor: 'red',
-        inputOperator: 'exit'
+        buttonColor: 'red'
     }, {
         inputValue: '4',
         id: '4',
-        buttonColor: 'grey',
-        inputOperator: '4'
+        buttonColor: 'grey'
     }, {
         inputValue: '5',
         id: '5',
-        buttonColor: 'grey',
-        inputOperator: '5'
+        buttonColor: 'grey'
     }, {
         inputValue: '6',
         id: '6',
-        buttonColor: 'grey',
-        inputOperator: '6'
+        buttonColor: 'grey'
     }, {
         inputValue: 'X',
         id: 'multiply',
-        buttonColor: 'grey',
-        inputOperator: '*'
+        buttonColor: 'grey'
     }, {
         inputValue: '/',
         id: 'divide',
-        buttonColor: 'grey',
-        inputOperator: '/'
+        buttonColor: 'grey'
     }, {
         inputValue: '1',
         id: '1',
-        buttonColor: 'grey',
-        inputOperator: '1'
+        buttonColor: 'grey'
     }, {
         inputValue: '2',
         id: '2',
-        buttonColor: 'grey',
-        inputOperator: '2'
+        buttonColor: 'grey'
     }, {
         inputValue: '3',
         id: '3',
-        buttonColor: 'grey',
-        inputOperator: '3'
+        buttonColor: 'grey'
     }, {
         inputValue: '+',
         id: 'add',
-        buttonColor: 'grey',
-        inputOperator: '+'
+        buttonColor: 'grey'
     }, {
         inputValue: '-',
         id: 'subtract',
-        buttonColor: 'grey',
-        inputOperator: '-'
+        buttonColor: 'grey'
     }, {
         inputValue: '0',
         id: '0',
-        buttonColor: 'grey',
-        inputOperator: '0'
+        buttonColor: 'grey'
     }, {
         inputValue: '.',
         id: 'decimal',
-        buttonColor: 'grey',
-        inputOperator: '.'
+        buttonColor: 'grey'
     }, {
         inputValue: 'EXP',
         id: 'exponential',
-        buttonColor: 'grey',
-        inputOperator: 'exp'
+        buttonColor: 'grey'
     }, {
         inputValue: 'PI',
         id: 'pi',
-        buttonColor: 'grey',
-        inputOperator: Math.PI
+        buttonColor: 'grey'
     }, {
         inputValue: '=',
         id: 'equalTo',
-        buttonColor: 'grey',
-        inputOperator: '='
+        buttonColor: 'grey'
     }
 
 ];
