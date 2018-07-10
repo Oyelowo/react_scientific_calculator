@@ -51,8 +51,8 @@ export let calculatorKeysArray = [{
         id: 'closedParanthesis',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'M+',
-        id: 'memory',
+        btnCharacter: 'n!',
+        id: 'factorial',
         buttonColor: 'black'
     }, {
         btnCharacter: 'MOD',
@@ -195,8 +195,8 @@ export let calculatorKeysArrayInverse = [{
         id: 'closedParanthesis',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'M+',
-        id: 'memory',
+        btnCharacter: 'n!',
+        id: 'factorial',
         buttonColor: 'black'
     }, {
         btnCharacter: 'MOD',

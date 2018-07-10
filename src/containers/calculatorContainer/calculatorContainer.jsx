@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {MathInDegree, isNumber} from '../../utility/utility';
+import {MathInDegree, isNumber, factorial} from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -204,6 +204,10 @@ class CalculatorContainer extends Component {
                     }
                     break;
 
+                case 'n!':
+                    this.setState({deisplayedCharacters: factorial(displayedCharacters)});
+                    break;
+
                 default:
                     this.state.displayedCharacters;
 
@@ -249,6 +253,7 @@ class CalculatorContainer extends Component {
                             .replace(/-/g, '−')
                             .replace(/××/g, '^')}</div>
                 </div>
+
                 <div className='extraKeys'>
                     <button onClick={this.toggleHypHandler}>2nd</button>
                     <button onClick={this.toggleDegreeRadanHandler}>{this.state.trigIsDegree
