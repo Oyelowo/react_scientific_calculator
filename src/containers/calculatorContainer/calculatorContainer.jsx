@@ -56,10 +56,10 @@ class CalculatorContainer extends Component {
             inputValue = inputValue === '0' && eventTargetValue !== '.'
                 ? ''
                 : inputValue;
-            let myValue = eventTargetValue === '.' && inputValue.includes('.')
+            let newValue = eventTargetValue === '.' && inputValue.includes('.')
                 ? ''
                 : eventTargetValue;
-            let updatedInputValue = inputValue + myValue;
+            let updatedInputValue = inputValue + newValue;
             this.setState({inputValue: updatedInputValue})
 
             if (!isNumber(eventTargetValue) && operatorsRegex.test(inputValue.toString().slice(-1))) {
