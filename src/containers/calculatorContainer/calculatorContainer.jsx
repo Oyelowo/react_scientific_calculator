@@ -205,7 +205,7 @@ class CalculatorContainer extends Component {
                     break;
 
                 case 'n!':
-                    this.setState({deisplayedCharacters: factorial(displayedCharacters)});
+                    this.setState({displayedCharacters: factorial(displayedCharacters)});
                     break;
 
                 default:
