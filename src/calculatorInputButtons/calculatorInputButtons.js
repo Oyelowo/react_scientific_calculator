@@ -60,15 +60,15 @@ export let calculatorKeysArray = [{
         buttonColor: 'black'
     }, {
         btnCharacter: '7',
-        id: '7',
+        id: 'seven',
         buttonColor: 'grey'
     }, {
         btnCharacter: '8',
-        id: '8',
+        id: 'eight',
         buttonColor: 'grey'
     }, {
         btnCharacter: '9',
-        id: '9',
+        id: 'nine',
         buttonColor: 'grey'
     }, {
         btnCharacter: 'DEL',
@@ -80,15 +80,15 @@ export let calculatorKeysArray = [{
         buttonColor: 'red'
     }, {
         btnCharacter: '4',
-        id: '4',
+        id: 'four',
         buttonColor: 'grey'
     }, {
         btnCharacter: '5',
-        id: '5',
+        id: 'five',
         buttonColor: 'grey'
     }, {
         btnCharacter: '6',
-        id: '6',
+        id: 'six',
         buttonColor: 'grey'
     }, {
         btnCharacter: 'X',
@@ -100,15 +100,15 @@ export let calculatorKeysArray = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '1',
-        id: '1',
+        id: 'one',
         buttonColor: 'grey'
     }, {
         btnCharacter: '2',
-        id: '2',
+        id: 'two',
         buttonColor: 'grey'
     }, {
         btnCharacter: '3',
-        id: '3',
+        id: 'three',
         buttonColor: 'grey'
     }, {
         btnCharacter: '+',
@@ -120,7 +120,7 @@ export let calculatorKeysArray = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '0',
-        id: '0',
+        id: 'zero',
         buttonColor: 'grey'
     }, {
         btnCharacter: '.',
@@ -204,15 +204,15 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'black'
     }, {
         btnCharacter: '7',
-        id: '7',
+        id: 'seven',
         buttonColor: 'grey'
     }, {
         btnCharacter: '8',
-        id: '8',
+        id: 'eight',
         buttonColor: 'grey'
     }, {
         btnCharacter: '9',
-        id: '9',
+        id: 'nine',
         buttonColor: 'grey'
     }, {
         btnCharacter: 'DEL',
@@ -224,15 +224,15 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'red'
     }, {
         btnCharacter: '4',
-        id: '4',
+        id: 'four',
         buttonColor: 'grey'
     }, {
         btnCharacter: '5',
-        id: '5',
+        id: 'five',
         buttonColor: 'grey'
     }, {
         btnCharacter: '6',
-        id: '6',
+        id: 'six',
         buttonColor: 'grey'
     }, {
         btnCharacter: 'X',
@@ -244,7 +244,7 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '1',
-        id: '1',
+        id: 'one',
         buttonColor: 'grey'
     }, {
         btnCharacter: '2',
@@ -252,7 +252,7 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '3',
-        id: '3',
+        id: 'three',
         buttonColor: 'grey'
     }, {
         btnCharacter: '+',
@@ -264,7 +264,7 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '0',
-        id: '0',
+        id: 'zero',
         buttonColor: 'grey'
     }, {
         btnCharacter: '.',
