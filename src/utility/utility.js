@@ -36,17 +36,17 @@ export const removeExtraDecimals = (str) => {
 export const removeExtraDecimalsInArrayStr = (oldArray) => {
     let newArr = [];
     for (let el of oldArray) {
-        newArr=newArr.concat(removeExtraDecimals(el))
+        newArr = newArr.concat(removeExtraDecimals(el))
     }
     return newArr;
 }
 
-export const splitStrByOperators=(str)=>{
-    return str.split(/[+|-|/|\*]/);
+export const splitStrByOperators = (str) => {
+    return str.split(/[+|-|/|\*]/) || str;
 }
 
 export const getAllOperatorsInStr = (str) => {
-    return str.match(/[+|-|/|\*]/g)
+    return str.match(/[+|-|/|\*]/g) || removeExtraDecimals(str);
 }
 
 export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
@@ -58,7 +58,13 @@ export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
     return newArr.join('');
 }
 
-
+export const removeExtraDecimalsInStrings = (str) => {
+    let numArr = splitStrByOperators(str);
+    let operatorsInArr = getAllOperatorsInStr(str);
+    let extraDecimalsCleanedArr = removeExtraDecimalsInArrayStr(numArr);
+    let addedNumAndOperatorsInArr = addOperatorsToNumInArray(extraDecimalsCleanedArr, operatorsInArr);
+    return addedNumAndOperatorsInArr;
+}
 
 
 

@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {MathInDegree, isNumber, factorial, enterKeyCodeCharacter, removeExtraDecimals} from '../../utility/utility';
+import {
+    MathInDegree,
+    isNumber,
+    factorial,
+    enterKeyCodeCharacter,
+    removeExtraDecimals,
+    removeExtraDecimalsInStrings
+} from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -93,13 +100,13 @@ class CalculatorContainer extends Component {
                         ? ''
                         : displayedCharacters;
 
-                    eventTargetValue = displayedCharacters.toString().includes('.') && eventTargetValue=='.'
-                        ? ''
-                        : eventTargetValue;
-                        
+                    // eventTargetValue = displayedCharacters.toString().includes('.') &&
+                    // eventTargetValue=='.'     ? ''     : eventTargetValue;
 
                     let updatedButtonValues = displayedCharacters + eventTargetValue;
-
+                    // if (operatorsRegex.test(updatedButtonValues) && !updatedButtonValues.includes('0.')) {
+                        updatedButtonValues = removeExtraDecimalsInStrings(updatedButtonValues);
+                    // }
                     // let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
                     // eventTargetValue == '.' ? displayedCharacters + '.' : displayedCharacters;
                     this.setState({displayedCharacters: updatedButtonValues});
@@ -323,7 +330,7 @@ class CalculatorContainer extends Component {
                             .replace(/\*\*/g, '^')
                             .replace(/\*/g, '×')
                             .replace(/-/g, '−')}
-                            </div>
+                    </div>
 
                 </div>
 
