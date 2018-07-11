@@ -136,7 +136,7 @@ export let calculatorKeysArray = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '=',
-        id: 'equalTo',
+        id: 'equals',
         buttonColor: 'grey'
     }
 
@@ -280,7 +280,7 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'grey'
     }, {
         btnCharacter: '=',
-        id: 'equalTo',
+        id: 'equals',
         buttonColor: 'grey'
     }
 

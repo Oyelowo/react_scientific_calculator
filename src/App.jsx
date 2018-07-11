@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <h1>My ReactJS Scientific Calculator
-          <i class="fas fa-calculator"></i>
+          <i className="fas fa-calculator"></i>
         </h1>
         <CalculatorContainer/>
         <p>You can also use your keyboard. Delete with key 'D', Evaluate with Enter Key.</p>
@@ -16,7 +16,7 @@ class App extends Component {
             href="https://www.linkedin.com/in/oyelowo-oyedayo/"
             target="_blank"
             rel="noopener noreferrer">&nbsp; 
-            <i class="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin"></i>
               Oyelowo Oyedayo</a>
         </footer>
       </div>
