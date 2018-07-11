@@ -6,13 +6,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>My ReactJS Scientific Calculator <i class="fas fa-calculator"></i></h1>
+        <h1>My ReactJS Scientific Calculator
+          <i class="fas fa-calculator"></i>
+        </h1>
         <CalculatorContainer/>
+        <p>You can also use your keyboard. Delete with key 'D', Evaluate with Enter Key.</p>
         <footer>Coded by:
           <a
             href="https://www.linkedin.com/in/oyelowo-oyedayo/"
             target="_blank"
-            rel="noopener noreferrer"> <i class="fab fa-linkedin"></i> Oyelowo Oyedayo</a>
+            rel="noopener noreferrer">&nbsp; 
+            <i class="fab fa-linkedin"></i>
+              Oyelowo Oyedayo</a>
         </footer>
       </div>
     );
