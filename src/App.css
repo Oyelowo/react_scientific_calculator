@@ -1,7 +1,7 @@
 body{
     text-align: center;
     /* background: url('./assets/backgroundImg.jpeg'); */
-    background: radial-gradient(rgb(189, 105, 133), rgb(255, 192, 203));
+    background: radial-gradient(rgb(180, 115, 137), rgb(255, 192, 203));
     background-repeat: no-repeat;
     background-size: 100% 100vh;
 }
