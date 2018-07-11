@@ -17,9 +17,11 @@ class CalculatorContainer extends Component {
 
     componentDidMount() {
         document.addEventListener('keypress', this.displayedCharactersHandler);
+            // document.addEventListener('keydown', this.displayedCharactersHandler);
     }
 
     componentWillUnmount() {
+        // document.removeEventListener('keydown', this.displayedCharactersHandler);
         document.removeEventListener('keypress', this.displayedCharactersHandler);
     }
 
@@ -27,6 +29,7 @@ class CalculatorContainer extends Component {
         event = event || window.event;
         let charCode = event.keyCode || event.which;
         let charStr = String.fromCharCode(charCode);
+        this.setState({btnChar: charStr})
         return charStr;
     }
 
@@ -45,7 +48,7 @@ class CalculatorContainer extends Component {
                     : eventTargetValue;
 
             if (event.keyCode) {
-                eventTargetValue = this.getBtnChar()
+                eventTargetValue = this.getBtnChar();
             }
 
             if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
@@ -121,6 +124,7 @@ class CalculatorContainer extends Component {
                         break;
 
                     case 'DEL':
+                    case 'D': case 'd':
                         let updatedValue;
                         if (displayedCharacters) {
                             updatedValue = displayedCharacters.length > 2
@@ -130,6 +134,7 @@ class CalculatorContainer extends Component {
                                 : '0';
                         }
                         this.setState({displayedCharacters: updatedValue});
+                        event.preventDefault();
                         break;
 
                     case '(':
@@ -139,7 +144,8 @@ class CalculatorContainer extends Component {
                         });
                         break;
 
-                    case '=': case String.fromCharCode(13):
+                    case '=':
+                    case String.fromCharCode(13):
                         // eslint-disable-next-line
                         this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
                         break;
@@ -147,7 +153,7 @@ class CalculatorContainer extends Component {
                         let pi = Math
                             .PI
                             .toFixed(2);
-                        if (/[\D]/.test(displayedCharacters.slice(-1))) {
+                        if (/\D$/.test(displayedCharacters)) {
                             this.setState({
                                 displayedCharacters: displayedCharacters + pi.toString()
                             });
