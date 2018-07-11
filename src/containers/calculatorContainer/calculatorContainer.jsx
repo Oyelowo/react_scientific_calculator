@@ -139,7 +139,7 @@ class CalculatorContainer extends Component {
                         });
                         break;
 
-                    case '=':
+                    case '=': case String.fromCharCode(13):
                         // eslint-disable-next-line
                         this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
                         break;
