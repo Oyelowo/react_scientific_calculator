@@ -41,8 +41,10 @@ class CalculatorContainer extends Component {
             let {value: eventTargetValue} = event.target;
 
             // change X to * for evaluating multiplication and 'MOD' for modulus
+            // eslint-disable-next-line 
             eventTargetValue = eventTargetValue == 'X'
                 ? '*'
+                // eslint-disable-next-line 
                 : eventTargetValue == 'MOD'
                     ? '%'
                     : eventTargetValue;
@@ -214,6 +216,7 @@ class CalculatorContainer extends Component {
                             this.setState({
                                 displayedCharacters: displayedCharacters + E
                             })
+                            // eslint-disable-next-line 
                         } else if (displayedCharacters == '0') {
                             this.setState({displayedCharacters: E})
                         }
@@ -229,7 +232,7 @@ class CalculatorContainer extends Component {
                         });
                         break;
                     default:
-                        this.state.displayedCharacters;
+                        this.setState({displayedCharacters: '0'});
 
                 }
             }
@@ -259,7 +262,7 @@ class CalculatorContainer extends Component {
         calculatorKeys = calculatorKeys.map((calcKey) => (
             <span key={calcKey.id}><input
             //disable all keys  except btn ON if on
-                disabled={calcKey.btnCharacter == 'ON'
+                disabled={calcKey.btnCharacter === 'ON'
                 ? false
                 : !calculatorIsOn}  
                 onClick={this.displayedCharactersHandler}
