@@ -1,6 +1,7 @@
 body{
     text-align: center;
-    background: url('./assets/backgroundImg.jpeg');
+    /* background: url('./assets/backgroundImg.jpeg'); */
+    background: radial-gradient(rgb(189, 105, 133), rgb(255, 192, 203));
     background-repeat: no-repeat;
     background-size: 100% 100vh;
 }
@@ -18,6 +19,10 @@ footer{
 }
 footer a{
     text-decoration: none;
-    color: purple;
+    color: coral;
     font-family: 'Share Tech Mono', monospace; 
+}
+
+footer a:hover, a:active{
+    opacity: 0.9;
 }

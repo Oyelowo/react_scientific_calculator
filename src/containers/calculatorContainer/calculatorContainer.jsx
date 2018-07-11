@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {MathInDegree, isNumber, factorial} from '../../utility/utility';
+import {MathInDegree, isNumber, factorial, enterKeyCodeCharacter} from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -17,7 +17,7 @@ class CalculatorContainer extends Component {
 
     componentDidMount() {
         document.addEventListener('keypress', this.displayedCharactersHandler);
-            // document.addEventListener('keydown', this.displayedCharactersHandler);
+        // document.addEventListener('keydown', this.displayedCharactersHandler);
     }
 
     componentWillUnmount() {
@@ -38,7 +38,7 @@ class CalculatorContainer extends Component {
             let {displayedCharacters, trigIsDegree} = this.state;
 
             const operatorsRegex = /[+-/*.%]/;
-            let {value: eventTargetValue, id: eventTargetId} = event.target;
+            let {value: eventTargetValue} = event.target;
 
             // change X to * for evaluating multiplication and 'MOD' for modulus
             eventTargetValue = eventTargetValue == 'X'
@@ -49,6 +49,14 @@ class CalculatorContainer extends Component {
 
             if (event.keyCode) {
                 eventTargetValue = this.getBtnChar();
+            }
+
+            if (displayedCharacters.length >= 40) {
+                displayedCharacters = displayedCharacters.slice(0, 41);
+            }
+
+            if (!(/\d/g.test(displayedCharacters))) {
+                displayedCharacters = ''
             }
 
             if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
@@ -124,17 +132,16 @@ class CalculatorContainer extends Component {
                         break;
 
                     case 'DEL':
-                    case 'D': case 'd':
+                    case 'D':
+                    case 'd':
                         let updatedValue;
-                        if (displayedCharacters) {
-                            updatedValue = displayedCharacters.length > 2
-                                ? displayedCharacters
-                                    .toString()
-                                    .slice(0, -1)
-                                : '0';
-                        }
+                        updatedValue = displayedCharacters.length > 1
+                            ? displayedCharacters
+                                .toString()
+                                .slice(0, -1)
+                            : '0';
+
                         this.setState({displayedCharacters: updatedValue});
-                        event.preventDefault();
                         break;
 
                     case '(':
@@ -145,7 +152,7 @@ class CalculatorContainer extends Component {
                         break;
 
                     case '=':
-                    case String.fromCharCode(13):
+                    case enterKeyCodeCharacter:
                         // eslint-disable-next-line
                         this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
                         break;

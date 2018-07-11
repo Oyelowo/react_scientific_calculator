@@ -1,6 +1,6 @@
 .container {
     /* background-color: #afeeee; */
-    background-color: #e795be;
+    background-color: #ff6fb7;
     height: 450px;
     width: 300px;
     border-radius: 8px;
@@ -33,7 +33,7 @@
     width: 266px;
     color: black;
     background-color: #e5dfa0;
-    font-size: 18px;
+    font-size: 22px;
     /* font-size: 99%; */
 }
 
