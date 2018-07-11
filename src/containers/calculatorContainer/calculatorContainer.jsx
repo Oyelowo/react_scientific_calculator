@@ -10,9 +10,12 @@ class CalculatorContainer extends Component {
         displayedCharacters: '',
         prevChar: '',
         btnChar: '',
+        latestChar: '',
         trigsAreInverse: false,
         trigIsDegree: true,
-        calculatorIsOn: false
+        calculatorIsOn: false,
+        errorMessage: null,
+        error:false
     }
 
     componentDidMount() {
@@ -41,10 +44,10 @@ class CalculatorContainer extends Component {
             let {value: eventTargetValue} = event.target;
 
             // change X to * for evaluating multiplication and 'MOD' for modulus
-            // eslint-disable-next-line 
+            // eslint-disable-next-line
             eventTargetValue = eventTargetValue == 'X'
                 ? '*'
-                // eslint-disable-next-line 
+                // eslint-disable-next-line
                 : eventTargetValue == 'MOD'
                     ? '%'
                     : eventTargetValue;
@@ -57,9 +60,11 @@ class CalculatorContainer extends Component {
                 displayedCharacters = displayedCharacters.slice(0, 41);
             }
 
-            if (!(/\d/g.test(displayedCharacters))) {
-                displayedCharacters = ''
-            }
+           
+
+            // if (!(/\d/g.test(displayedCharacters))) {
+            //     displayedCharacters = ''
+            // }
 
             if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
                 // prevent multiple zeros at the beginning
@@ -68,7 +73,9 @@ class CalculatorContainer extends Component {
                     : displayedCharacters;
 
                 // prevent adding multiple decimals at a time
-                let newValue = eventTargetValue === '.' && displayedCharacters.includes('.')
+                let newValue = eventTargetValue === '.' && displayedCharacters
+                    .toString()
+                    .slice(-1) == '.'
                     ? ''
                     : eventTargetValue;
                 let updatedDisplayedCharacters = displayedCharacters + newValue;
@@ -80,11 +87,13 @@ class CalculatorContainer extends Component {
 
                     this.setState({displayedCharacters: updatedDisplayedCharacters})
                 }
+                let lastChar = displayedCharacters.split(/[+|-|/|\*]/);
+                this.setState({latestInput: lastChar})
 
             } else {
                 switch (eventTargetValue) {
                     case 'ON':
-                        this.setState({displayedCharacters: '0', calculatorIsOn: true});
+                        this.setState({displayedCharacters: '0', calculatorIsOn: true, error: false});
                         break;
 
                     case 'COS':
@@ -216,7 +225,7 @@ class CalculatorContainer extends Component {
                             this.setState({
                                 displayedCharacters: displayedCharacters + E
                             })
-                            // eslint-disable-next-line 
+                            // eslint-disable-next-line
                         } else if (displayedCharacters == '0') {
                             this.setState({displayedCharacters: E})
                         }
@@ -237,7 +246,7 @@ class CalculatorContainer extends Component {
                 }
             }
         } catch (error) {
-            this.setState({displayedCharacters: error})
+            this.setState({displayedCharacters: error, error: true})
         }
     }
 
@@ -260,29 +269,25 @@ class CalculatorContainer extends Component {
             : calculatorKeysArray
 
         calculatorKeys = calculatorKeys.map((calcKey) => (
-            <span key={calcKey.id}><input
-            //disable all keys  except btn ON if on
-                disabled={calcKey.btnCharacter === 'ON'
+            <span key={calcKey.id}>
+<input //disable all keys  except btn ON if on
+disabled={calcKey.btnCharacter === 'ON'
                 ? false
-                : !calculatorIsOn}  
-                onClick={this.displayedCharactersHandler}
-                className={`button ${calcKey.buttonColor}`}
-                type="button"
-                id={calcKey.id}
-                value={calcKey.btnCharacter}/></span>
+                : !calculatorIsOn} onClick={this.displayedCharactersHandler} className={`button ${calcKey.buttonColor}`} type="button" id={calcKey.id} value={calcKey.btnCharacter}/></span>
         ));
 
         return (
             <div className='container'>
 
                 <div className='calculatorScreen'>
-                    <div className='display'>{this
-                            .state
-                            .displayedCharacters
-                            .toString()
-                            .replace(/\*/g, '×')
-                            .replace(/-/g, '−')
-                            .replace(/××/g, '^')}</div>
+                    <div id='display'>{this
+                                .state
+                                .displayedCharacters
+                                .toString()
+                                .replace(/\*/g, '×')
+                                .replace(/-/g, '−')
+                                .replace(/××/g, '^')
+                            }</div>
                 </div>
 
                 <div className='extraKeys'>

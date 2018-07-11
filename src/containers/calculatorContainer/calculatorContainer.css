@@ -23,7 +23,7 @@
     unicode-bidi: bidi-override; */
 }
 
-.calculatorScreen .display {
+.calculatorScreen #display {
     font-family: 'Share Tech Mono', monospace;
     word-wrap: break-word;
     position: relative;

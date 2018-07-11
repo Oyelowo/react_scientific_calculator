@@ -40,7 +40,7 @@ export let calculatorKeysArray = [{
         buttonColor: 'black'
     }, {
         btnCharacter: 'ON',
-        id: 'on',
+        id: 'clear',
         buttonColor: 'black'
     }, {
         btnCharacter: '(',
@@ -184,7 +184,7 @@ export let calculatorKeysArrayInverse = [{
         buttonColor: 'black'
     }, {
         btnCharacter: 'ON',
-        id: 'on',
+        id: 'clear',
         buttonColor: 'black'
     }, {
         btnCharacter: '(',
