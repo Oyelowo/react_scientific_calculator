@@ -58,190 +58,189 @@ class CalculatorContainer extends Component {
                 displayedCharacters = displayedCharacters.slice(0, 41);
             }
 
-           
+            // if (!(/\d/g.test(displayedCharacters))) {     displayedCharacters = '' } if
+            // (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) { //
+            // prevent multiple zeros at the beginning     displayedCharacters =
+            // displayedCharacters === '0' && eventTargetValue !== '.'         ? '' :
+            // displayedCharacters;     // prevent adding multiple decimals at a time let
+            // newValue = eventTargetValue === '.' && displayedCharacters .toString()
+            // .slice(-1) == '.'         ? ''         : eventTargetValue;     let
+            // updatedDisplayedCharacters = displayedCharacters + newValue;
+            // this.setState({displayedCharacters: updatedDisplayedCharacters})     if
+            // (!isNumber(eventTargetValue) &&
+            // operatorsRegex.test(displayedCharacters.toString().slice(-1))) {
+            // updatedDisplayedCharacters = displayedCharacters.slice(0, -1) +
+            // eventTargetValue;         this.setState({displayedCharacters:
+            // updatedDisplayedCharacters})     }     let lastChar =
+            // displayedCharacters.split(/[+|-|/|\*]/);     this.setState({latestInput:
+            // lastChar}) } else {
+            switch (eventTargetValue) {
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                // disallow multiple zeros starting
+                displayedCharacters = displayedCharacters === '0' ? '': displayedCharacters;
+                    let updatedDisplayedCharacters = displayedCharacters + eventTargetValue;
+                    this.setState({displayedCharacters: updatedDisplayedCharacters});
+                    break;
+                case 'ON':
+                    this.setState({displayedCharacters: '0', calculatorIsOn: true});
+                    break;
 
-            // if (!(/\d/g.test(displayedCharacters))) {
-            //     displayedCharacters = ''
-            // }
+                case 'COS':
+                    let cosResult = trigIsDegree
+                        ? MathInDegree.cos(displayedCharacters)
+                        : Math.cos(displayedCharacters);
+                    this.setState({displayedCharacters: cosResult});
+                    break;
 
-            if (isNumber(eventTargetValue) || operatorsRegex.test(eventTargetValue)) {
-                // prevent multiple zeros at the beginning
-                displayedCharacters = displayedCharacters === '0' && eventTargetValue !== '.'
-                    ? ''
-                    : displayedCharacters;
+                case 'SIN':
+                    let sinResult = trigIsDegree
+                        ? MathInDegree.sin(displayedCharacters)
+                        : Math.sin(displayedCharacters);
+                    this.setState({displayedCharacters: sinResult});
+                    break;
 
-                // prevent adding multiple decimals at a time
-                let newValue = eventTargetValue === '.' && displayedCharacters
-                    .toString()
-                    .slice(-1) == '.'
-                    ? ''
-                    : eventTargetValue;
-                let updatedDisplayedCharacters = displayedCharacters + newValue;
-                this.setState({displayedCharacters: updatedDisplayedCharacters})
+                case 'TAN':
+                    let tanResult = trigIsDegree
+                        ? MathInDegree.tan(displayedCharacters)
+                        : Math.tan(displayedCharacters);
+                    this.setState({displayedCharacters: tanResult});
+                    break;
 
-                if (!isNumber(eventTargetValue) && operatorsRegex.test(displayedCharacters.toString().slice(-1))) {
+                case 'ACOS':
+                    let acosResult = trigIsDegree
+                        ? MathInDegree.acos(displayedCharacters)
+                        : Math.acos(displayedCharacters);
+                    this.setState({displayedCharacters: acosResult});
+                    break;
 
-                    updatedDisplayedCharacters = displayedCharacters.slice(0, -1) + eventTargetValue;
+                case 'ASIN':
+                    let asinResult = trigIsDegree
+                        ? MathInDegree.asin(displayedCharacters)
+                        : Math.asin(displayedCharacters);
+                    this.setState({displayedCharacters: asinResult});
+                    break;
 
-                    this.setState({displayedCharacters: updatedDisplayedCharacters})
-                }
-                let lastChar = displayedCharacters.split(/[+|-|/|\*]/);
-                this.setState({latestInput: lastChar})
+                case 'ATAN':
+                    let atanResult = trigIsDegree
+                        ? MathInDegree.atan(displayedCharacters)
+                        : Math.atan(displayedCharacters);
+                    this.setState({displayedCharacters: atanResult});
+                    break;
 
-            } else {
-                switch (eventTargetValue) {
-                    case 'ON':
-                        this.setState({displayedCharacters: '0', calculatorIsOn: true});
-                        break;
+                case 'OFF':
+                    this.setState({displayedCharacters: '', calculatorIsOn: false});
+                    break;
 
-                    case 'COS':
-                        let cosResult = trigIsDegree
-                            ? MathInDegree.cos(displayedCharacters)
-                            : Math.cos(displayedCharacters);
-                        this.setState({displayedCharacters: cosResult});
-                        break;
+                case 'DEL':
+                case 'D':
+                case 'd':
+                    let updatedValue;
+                    updatedValue = displayedCharacters.length > 1
+                        ? displayedCharacters
+                            .toString()
+                            .slice(0, -1)
+                        : '0';
 
-                    case 'SIN':
-                        let sinResult = trigIsDegree
-                            ? MathInDegree.sin(displayedCharacters)
-                            : Math.sin(displayedCharacters);
-                        this.setState({displayedCharacters: sinResult});
-                        break;
+                    this.setState({displayedCharacters: updatedValue});
+                    break;
 
-                    case 'TAN':
-                        let tanResult = trigIsDegree
-                            ? MathInDegree.tan(displayedCharacters)
-                            : Math.tan(displayedCharacters);
-                        this.setState({displayedCharacters: tanResult});
-                        break;
+                case '(':
+                case ')':
+                    this.setState({
+                        displayedCharacters: displayedCharacters + eventTargetValue
+                    });
+                    break;
 
-                    case 'ACOS':
-                        let acosResult = trigIsDegree
-                            ? MathInDegree.acos(displayedCharacters)
-                            : Math.acos(displayedCharacters);
-                        this.setState({displayedCharacters: acosResult});
-                        break;
-
-                    case 'ASIN':
-                        let asinResult = trigIsDegree
-                            ? MathInDegree.asin(displayedCharacters)
-                            : Math.asin(displayedCharacters);
-                        this.setState({displayedCharacters: asinResult});
-                        break;
-
-                    case 'ATAN':
-                        let atanResult = trigIsDegree
-                            ? MathInDegree.atan(displayedCharacters)
-                            : Math.atan(displayedCharacters);
-                        this.setState({displayedCharacters: atanResult});
-                        break;
-
-                    case 'OFF':
-                        this.setState({displayedCharacters: '', calculatorIsOn: false});
-                        break;
-
-                    case 'DEL':
-                    case 'D':
-                    case 'd':
-                        let updatedValue;
-                        updatedValue = displayedCharacters.length > 1
-                            ? displayedCharacters
-                                .toString()
-                                .slice(0, -1)
-                            : '0';
-
-                        this.setState({displayedCharacters: updatedValue});
-                        break;
-
-                    case '(':
-                    case ')':
+                case '=':
+                case enterKeyCodeCharacter:
+                    // eslint-disable-next-line
+                    this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
+                    break;
+                case 'π':
+                    let pi = Math
+                        .PI
+                        .toFixed(2);
+                    if (/\D$/.test(displayedCharacters)) {
                         this.setState({
-                            displayedCharacters: displayedCharacters + eventTargetValue
+                            displayedCharacters: displayedCharacters + pi.toString()
                         });
-                        break;
+                    } else {
+                        this.setState({
+                            displayedCharacters: pi.toString()
+                        });
+                    };
+                    break;
+                case '±':
+                    this.setState({
+                        displayedCharacters: -displayedCharacters
+                    });
+                    break;
+                case 'ABS':
+                    this.setState({
+                        displayedCharacters: Math.abs(displayedCharacters)
+                    });
+                    break;
 
-                    case '=':
-                    case enterKeyCodeCharacter:
+                case '√':
+                    this.setState({
+                        displayedCharacters: Math.sqrt(displayedCharacters)
+                    });
+                    break;
+
+                case 'SQR':
+                    this.setState({
+                        displayedCharacters: Math.pow(displayedCharacters, 2)
+                    });
+                    break;
+
+                case '^':
+                    this.setState({
+                        displayedCharacters: displayedCharacters + '**'
+                    });
+                    break;
+
+                case 'LOG':
+                    this.setState({
+                        displayedCharacters: Math.log10(displayedCharacters)
+                    });
+                    break;
+
+                case 'In':
+                    let E = Math
+                        .E
+                        .toFixed(2)
+                        .toString();
+                    if (/\D$/.test(displayedCharacters)) {
+                        this.setState({
+                            displayedCharacters: displayedCharacters + E
+                        })
                         // eslint-disable-next-line
-                        this.setState({displayedCharacters: eval(displayedCharacters), evaluated: true});
-                        break;
-                    case 'π':
-                        let pi = Math
-                            .PI
-                            .toFixed(2);
-                        if (/\D$/.test(displayedCharacters)) {
-                            this.setState({
-                                displayedCharacters: displayedCharacters + pi.toString()
-                            });
-                        } else {
-                            this.setState({
-                                displayedCharacters: pi.toString()
-                            });
-                        };
-                        break;
-                    case '±':
-                        this.setState({
-                            displayedCharacters: -displayedCharacters
-                        });
-                        break;
-                    case 'ABS':
-                        this.setState({
-                            displayedCharacters: Math.abs(displayedCharacters)
-                        });
-                        break;
+                    } else if (displayedCharacters == '0') {
+                        this.setState({displayedCharacters: E})
+                    }
+                    break;
 
-                    case '√':
-                        this.setState({
-                            displayedCharacters: Math.sqrt(displayedCharacters)
-                        });
-                        break;
+                case 'n!':
+                    this.setState({displayedCharacters: factorial(displayedCharacters)});
+                    break;
 
-                    case 'SQR':
-                        this.setState({
-                            displayedCharacters: Math.pow(displayedCharacters, 2)
-                        });
-                        break;
+                case 'EXP':
+                    this.setState({
+                        displayedCharacters: Math.exp(displayedCharacters)
+                    });
+                    break;
+                default:
+                    this.setState({displayedCharacters: displayedCharacters});
 
-                    case '^':
-                        this.setState({
-                            displayedCharacters: displayedCharacters + '**'
-                        });
-                        break;
-
-                    case 'LOG':
-                        this.setState({
-                            displayedCharacters: Math.log10(displayedCharacters)
-                        });
-                        break;
-
-                    case 'In':
-                        let E = Math
-                            .E
-                            .toFixed(2)
-                            .toString();
-                        if (/\D$/.test(displayedCharacters)) {
-                            this.setState({
-                                displayedCharacters: displayedCharacters + E
-                            })
-                            // eslint-disable-next-line
-                        } else if (displayedCharacters == '0') {
-                            this.setState({displayedCharacters: E})
-                        }
-                        break;
-
-                    case 'n!':
-                        this.setState({displayedCharacters: factorial(displayedCharacters)});
-                        break;
-
-                    case 'EXP':
-                        this.setState({
-                            displayedCharacters: Math.exp(displayedCharacters)
-                        });
-                        break;
-                    default:
-                        this.setState({displayedCharacters: displayedCharacters});
-
-                }
             }
         } catch (error) {
             this.setState({displayedCharacters: error, error: true})
@@ -268,10 +267,15 @@ class CalculatorContainer extends Component {
 
         calculatorKeys = calculatorKeys.map((calcKey) => (
             <span key={calcKey.id}>
-<input //disable all keys  except btn ON if on
-disabled={calcKey.btnCharacter === 'ON'
-                ? false
-                : !calculatorIsOn} onClick={this.displayedCharactersHandler} className={`button ${calcKey.buttonColor}`} type="button" id={calcKey.id} value={calcKey.btnCharacter}/></span>
+                <input
+                    disabled={calcKey.btnCharacter === 'ON'
+                    ? false
+                    : !calculatorIsOn}
+                    onClick={this.displayedCharactersHandler}
+                    className={`button ${calcKey.buttonColor}`}
+                    type="button"
+                    id={calcKey.id}
+                    value={calcKey.btnCharacter}/></span>
         ));
 
         return (
@@ -279,13 +283,13 @@ disabled={calcKey.btnCharacter === 'ON'
 
                 <div className='calculatorScreen'>
                     <div id='display'>{this
-                                .state
-                                .displayedCharacters
-                                .toString()
-                                .replace(/\*/g, '×')
-                                .replace(/-/g, '−')
-                                .replace(/××/g, '^')
-                            }</div>
+                            .state
+                            .displayedCharacters
+                            .toString()
+                            .replace(/\*/g, '×')
+                            .replace(/-/g, '−')
+                            .replace(/××/g, '^')
+}</div>
                 </div>
 
                 <div className='extraKeys'>
