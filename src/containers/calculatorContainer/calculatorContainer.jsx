@@ -13,9 +13,7 @@ class CalculatorContainer extends Component {
         latestChar: '',
         trigsAreInverse: false,
         trigIsDegree: true,
-        calculatorIsOn: false,
-        errorMessage: null,
-        error:false
+        calculatorIsOn: false
     }
 
     componentDidMount() {
@@ -93,7 +91,7 @@ class CalculatorContainer extends Component {
             } else {
                 switch (eventTargetValue) {
                     case 'ON':
-                        this.setState({displayedCharacters: '0', calculatorIsOn: true, error: false});
+                        this.setState({displayedCharacters: '0', calculatorIsOn: true});
                         break;
 
                     case 'COS':
