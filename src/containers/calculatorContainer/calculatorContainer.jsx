@@ -254,6 +254,7 @@ class CalculatorContainer extends Component {
                 onClick={this.displayedCharactersHandler}
                 className={`button ${calcKey.buttonColor}`}
                 type="button"
+                id={calcKey.id}
                 value={calcKey.btnCharacter}/></span>
         ));
 

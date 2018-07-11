@@ -33,7 +33,7 @@
     width: 266px;
     color: black;
     background-color: #e5dfa0;
-    font-size: 25px;
+    font-size: 18px;
     /* font-size: 99%; */
 }
 
@@ -46,6 +46,12 @@
     grid-row-gap: 15px;
 }
 
+#acos,
+#asin,
+#atan {
+    font-size: 11px;
+}
+
 .button {
     width: 40px;
     height: 30px;
@@ -53,7 +59,13 @@
     border-radius: 7px;
     margin-left: 10px;
     cursor: pointer;
-    font-size: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* font-size: 14px; */
+}
+
+input.button:active{
+    background: coral;
+    opacity: 0.9;
 }
 
 .button.black {
@@ -67,6 +79,7 @@
     color: white;
     background-color: #647489;
     border-bottom: 2px solid #647489;
+    outline: none;
 }
 
 .button.red {
@@ -84,6 +97,10 @@
 
 .extraKeys button {
     font-size: 12px;
+    border-radius: 9px;
+    background: black;
+    color: white;
+    padding: 4px;
 }
 
 .extraKeys button:nth-child(2) {
