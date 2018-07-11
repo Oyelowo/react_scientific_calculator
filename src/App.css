@@ -19,10 +19,11 @@ footer{
 }
 footer a{
     text-decoration: none;
-    color: coral;
+    color: rgb(172, 2, 30);
+    font-weight: bolder;
     font-family: 'Share Tech Mono', monospace; 
 }
 
 footer a:hover, a:active{
-    opacity: 0.9;
+    opacity: 0.8;
 }

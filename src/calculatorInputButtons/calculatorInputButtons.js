@@ -39,8 +39,8 @@ export let calculatorKeysArray = [{
         id: 'In',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'AC',
-        id: 'ac',
+        btnCharacter: 'ON',
+        id: 'on',
         buttonColor: 'black'
     }, {
         btnCharacter: '(',
@@ -75,8 +75,8 @@ export let calculatorKeysArray = [{
         id: 'del',
         buttonColor: 'red'
     }, {
-        btnCharacter: 'EXIT',
-        id: 'exit',
+        btnCharacter: 'OFF',
+        id: 'off',
         buttonColor: 'red'
     }, {
         btnCharacter: '4',
@@ -183,8 +183,8 @@ export let calculatorKeysArrayInverse = [{
         id: 'In',
         buttonColor: 'black'
     }, {
-        btnCharacter: 'AC',
-        id: 'ac',
+        btnCharacter: 'ON',
+        id: 'on',
         buttonColor: 'black'
     }, {
         btnCharacter: '(',
@@ -219,8 +219,8 @@ export let calculatorKeysArrayInverse = [{
         id: 'del',
         buttonColor: 'red'
     }, {
-        btnCharacter: 'EXIT',
-        id: 'exit',
+        btnCharacter: 'OFF',
+        id: 'off',
         buttonColor: 'red'
     }, {
         btnCharacter: '4',

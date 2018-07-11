@@ -12,7 +12,7 @@ class CalculatorContainer extends Component {
         btnChar: '',
         trigsAreInverse: false,
         trigIsDegree: true,
-        evaluated: false
+        calculatorIsOn: false
     }
 
     componentDidMount() {
@@ -81,8 +81,8 @@ class CalculatorContainer extends Component {
 
             } else {
                 switch (eventTargetValue) {
-                    case 'AC':
-                        this.setState({displayedCharacters: '0'});
+                    case 'ON':
+                        this.setState({displayedCharacters: '0', calculatorIsOn: true});
                         break;
 
                     case 'COS':
@@ -127,8 +127,8 @@ class CalculatorContainer extends Component {
                         this.setState({displayedCharacters: atanResult});
                         break;
 
-                    case 'EXIT':
-                        this.setState({displayedCharacters: ''});
+                    case 'OFF':
+                        this.setState({displayedCharacters: '', calculatorIsOn: false});
                         break;
 
                     case 'DEL':
@@ -251,13 +251,17 @@ class CalculatorContainer extends Component {
     }
 
     render() {
-        const {calculatorKeysArray, calculatorKeysArrayInverse, trigsAreInverse} = this.state;
+        const {calculatorIsOn, calculatorKeysArray, calculatorKeysArrayInverse, trigsAreInverse} = this.state;
         let calculatorKeys = trigsAreInverse
             ? calculatorKeysArrayInverse
             : calculatorKeysArray
 
         calculatorKeys = calculatorKeys.map((calcKey) => (
             <span key={calcKey.id}><input
+            //disable all keys  except btn ON if on
+                disabled={calcKey.btnCharacter == 'ON'
+                ? false
+                : !calculatorIsOn}  
                 onClick={this.displayedCharactersHandler}
                 className={`button ${calcKey.buttonColor}`}
                 type="button"

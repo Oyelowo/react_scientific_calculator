@@ -68,6 +68,10 @@ input.button:active{
     opacity: 0.9;
 }
 
+#on{
+    background: rgb(0, 0, 219);
+}
+
 .button.black {
     color: white;
     background-color: black;
