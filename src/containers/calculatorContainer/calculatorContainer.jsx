@@ -40,7 +40,7 @@ class CalculatorContainer extends Component {
         try {
             let {displayedCharacters, trigIsDegree} = this.state;
 
-            const operatorsRegex = /[+-/*.%]/;
+            const operatorsRegex = /[+-/*%]/;
             let {value: eventTargetValue} = event.target;
 
             // change X to * for evaluating multiplication and 'MOD' for modulus
@@ -87,12 +87,23 @@ class CalculatorContainer extends Component {
                 case '7':
                 case '8':
                 case '9':
+                case '.':
                     // disallow multiple zeros starting
                     displayedCharacters = displayedCharacters === '0'
                         ? ''
                         : displayedCharacters;
+
+                    eventTargetValue = displayedCharacters.toString().includes('.') && eventTargetValue=='.'
+                        ? ''
+                        : eventTargetValue;
+                        
+
                     let updatedButtonValues = displayedCharacters + eventTargetValue;
+
+                    // let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
+                    // eventTargetValue == '.' ? displayedCharacters + '.' : displayedCharacters;
                     this.setState({displayedCharacters: updatedButtonValues});
+
                     break;
 
                 case '+':
@@ -100,17 +111,16 @@ class CalculatorContainer extends Component {
                 case '/':
                 case '*':
                 case '%':
-                case '.':
-                    // eventTargetValue =
-                    // operatorsRegex.test(displayedCharacters.toString().slice(-1)) ? '':
-                    // eventTargetValue;
                     let updatedOperationChars = displayedCharacters + eventTargetValue;
-                    let lastChar = displayedCharacters.toString().slice(-1);
+                    let lastChar = displayedCharacters
+                        .toString()
+                        .slice(-1);
                     if (operatorsRegex.test(lastChar)) {
-                        updatedOperationChars = displayedCharacters.toString().slice(0, -1) + eventTargetValue;
+                        updatedOperationChars = displayedCharacters
+                            .toString()
+                            .slice(0, -1) + eventTargetValue;
                     }
-                    updatedOperationChars = removeExtraDecimals(updatedOperationChars);
-                    this.setState({displayedCharacters: updatedOperationChars, currentButton: eventTargetValue});
+                    this.setState({displayedCharacters: updatedOperationChars});
                     break;
 
                 case 'ON':
@@ -306,14 +316,14 @@ class CalculatorContainer extends Component {
 
                 <div className='calculatorScreen'>
                     <div id='display'>
-                {this
+                        {this
                             .state
                             .displayedCharacters
                             .toString()
                             .replace(/\*\*/g, '^')
                             .replace(/\*/g, '×')
-                            .replace(/-/g, '−')
-}</div>
+                            .replace(/-/g, '−')}
+                            </div>
 
                 </div>
 
