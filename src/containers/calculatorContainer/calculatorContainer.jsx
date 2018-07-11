@@ -232,7 +232,7 @@ class CalculatorContainer extends Component {
                         });
                         break;
                     default:
-                        this.setState({displayedCharacters: '0'});
+                        this.setState({displayedCharacters: displayedCharacters});
 
                 }
             }
