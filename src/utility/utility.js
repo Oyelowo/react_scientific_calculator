@@ -21,3 +21,14 @@ export const MathInDegree = {
     acos: (number) => roundNumber(toDegree(Math.acos(number))),
     atan: (number) => roundNumber(toDegree(Math.atan(number)))
 };
+
+export const removeExtraDecimals = (str) => {
+    let strGetter = '';
+    let firstDecimalIndex = str.indexOf('.');
+    for (let i of str) {
+        if (i != '.' || i != strGetter[firstDecimalIndex]) {
+            strGetter += i
+        }
+    }
+    return strGetter;
+};

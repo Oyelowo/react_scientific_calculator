@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {MathInDegree, isNumber, factorial, enterKeyCodeCharacter} from '../../utility/utility';
+import {MathInDegree, isNumber, factorial, enterKeyCodeCharacter, removeExtraDecimals} from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -10,10 +10,12 @@ class CalculatorContainer extends Component {
         displayedCharacters: '',
         prevChar: '',
         btnChar: '',
+        currentButton: '',
         latestChar: '',
         trigsAreInverse: false,
         trigIsDegree: true,
-        calculatorIsOn: false
+        calculatorIsOn: false,
+        result: ''
     }
 
     componentDidMount() {
@@ -85,11 +87,32 @@ class CalculatorContainer extends Component {
                 case '7':
                 case '8':
                 case '9':
-                // disallow multiple zeros starting
-                displayedCharacters = displayedCharacters === '0' ? '': displayedCharacters;
-                    let updatedDisplayedCharacters = displayedCharacters + eventTargetValue;
-                    this.setState({displayedCharacters: updatedDisplayedCharacters});
+                    // disallow multiple zeros starting
+                    displayedCharacters = displayedCharacters === '0'
+                        ? ''
+                        : displayedCharacters;
+                    let updatedButtonValues = displayedCharacters + eventTargetValue;
+                    this.setState({displayedCharacters: updatedButtonValues});
                     break;
+
+                case '+':
+                case '-':
+                case '/':
+                case '*':
+                case '%':
+                case '.':
+                    // eventTargetValue =
+                    // operatorsRegex.test(displayedCharacters.toString().slice(-1)) ? '':
+                    // eventTargetValue;
+                    let updatedOperationChars = displayedCharacters + eventTargetValue;
+                    let lastChar = displayedCharacters.toString().slice(-1);
+                    if (operatorsRegex.test(lastChar)) {
+                        updatedOperationChars = displayedCharacters.toString().slice(0, -1) + eventTargetValue;
+                    }
+                    updatedOperationChars = removeExtraDecimals(updatedOperationChars);
+                    this.setState({displayedCharacters: updatedOperationChars, currentButton: eventTargetValue});
+                    break;
+
                 case 'ON':
                     this.setState({displayedCharacters: '0', calculatorIsOn: true});
                     break;
@@ -282,14 +305,16 @@ class CalculatorContainer extends Component {
             <div className='container'>
 
                 <div className='calculatorScreen'>
-                    <div id='display'>{this
+                    <div id='display'>
+                {this
                             .state
                             .displayedCharacters
                             .toString()
+                            .replace(/\*\*/g, '^')
                             .replace(/\*/g, '×')
                             .replace(/-/g, '−')
-                            .replace(/××/g, '^')
 }</div>
+
                 </div>
 
                 <div className='extraKeys'>
