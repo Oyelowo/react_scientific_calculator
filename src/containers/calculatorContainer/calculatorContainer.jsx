@@ -2,10 +2,8 @@ import React, {Component} from 'react';
 import './calculatorContainer.css';
 import {
     MathInDegree,
-    isNumber,
     factorial,
     enterKeyCodeCharacter,
-    removeExtraDecimals,
     removeExtraDecimalsInStrings
 } from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';

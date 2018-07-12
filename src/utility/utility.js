@@ -26,6 +26,7 @@ export const removeExtraDecimals = (str) => {
     let strGetter = '';
     let firstDecimalIndex = str.indexOf('.');
     for (let i of str) {
+        // eslint-disable-next-line 
         if (i != '.' || i != strGetter[firstDecimalIndex]) {
             strGetter += i
         }
@@ -42,11 +43,11 @@ export const removeExtraDecimalsInArrayStr = (oldArray) => {
 }
 
 export const splitStrByOperators = (str) => {
-    return str.split(/[+|\-|%|/|\*]/);
+    return str.split(/[+|\-|%|/|*]/);
 }
 
 export const getAllOperatorsInStr = (str) => {
-    return str.match(/[+|\-|%|/|\*]/g) || "";
+    return str.match(/[+|\-|%|/|*]/g) || "";
 }
 
 export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
