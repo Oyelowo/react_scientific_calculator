@@ -9,7 +9,6 @@ body{
     margin: 0;
 }
 footer, h1{
-    font-size: 2rem;
     background: #eaeaea;
     color: rgb(199, 23, 52);
     padding: 10px;
@@ -27,14 +26,14 @@ p{
     color: rgb(199, 23, 52);
     font-weight: bolder;
     background: #eaeaea;
-    padding: 10px;
+    padding: 7px;
     width: 60%;
-    margin: 30px auto 0;
+    margin: 10px auto 0;
     border-radius: 15px;
 }
 
 footer{
-    margin-top: 20px;
+    margin-top: 11px;
 }
 footer a{
     text-decoration: none;
@@ -48,10 +47,13 @@ footer a:hover, a:active{
 }
 
 @media(max-width: 768px){
+    h1{
+       font-size: 1.2rem;
+    }
     p{
         width: 95%;
     }
-    footer, p{
-        font-size: 17px;
+    footer a, p{
+        font-size: 0.8rem;
     }
 }
