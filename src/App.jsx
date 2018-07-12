@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <h1>My ReactJS Scientific Calculator
-          <i className="fas fa-calculator"></i>
+          &nbsp;<i className="fas fa-calculator"></i>
         </h1>
         <CalculatorContainer/>
         <p>You can also use your keyboard. Delete with key 'D', Evaluate with Enter Key.</p>
