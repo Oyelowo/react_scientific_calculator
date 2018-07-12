@@ -104,9 +104,9 @@ class CalculatorContainer extends Component {
                     // eventTargetValue=='.'     ? ''     : eventTargetValue;
 
                     let updatedButtonValues = displayedCharacters + eventTargetValue;
-                    if (updatedButtonValues.length>2 && updatedButtonValues.includes('.') && operatorsRegex.test(updatedButtonValues)) {
+                    // if (updatedButtonValues.length>2 && updatedButtonValues.includes('.') && operatorsRegex.test(updatedButtonValues)) {
                         updatedButtonValues = removeExtraDecimalsInStrings(updatedButtonValues);
-                    }
+                    // }
                     // let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
                     // eventTargetValue == '.' ? displayedCharacters + '.' : displayedCharacters;
                     this.setState({displayedCharacters: updatedButtonValues});

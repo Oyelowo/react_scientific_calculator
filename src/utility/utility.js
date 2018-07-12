@@ -42,11 +42,11 @@ export const removeExtraDecimalsInArrayStr = (oldArray) => {
 }
 
 export const splitStrByOperators = (str) => {
-    return str.split(/[+|-|%|/|\*]/);
+    return str.split(/[+|\-|%|/|\*]/);
 }
 
 export const getAllOperatorsInStr = (str) => {
-    return str.match(/[+|-|%|/|\*]/g) || "";
+    return str.match(/[+|\-|%|/|\*]/g) || "";
 }
 
 export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
