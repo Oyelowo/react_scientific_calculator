@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 import './calculatorContainer.css';
-import {
-    MathInDegree,
-    factorial,
-    enterKeyCodeCharacter,
-    removeExtraDecimalsInStrings
-} from '../../utility/utility';
+import {MathInDegree, factorial, enterKeyCodeCharacter, removeExtraDecimalsInStrings} from '../../utility/utility';
 import {calculatorKeysArray, calculatorKeysArrayInverse} from '../../calculatorInputButtons/calculatorInputButtons';
 
 class CalculatorContainer extends Component {
@@ -83,17 +78,9 @@ class CalculatorContainer extends Component {
                         ? ''
                         : displayedCharacters;
 
-                    // eventTargetValue = displayedCharacters.toString().includes('.') &&
-                    // eventTargetValue=='.'     ? ''     : eventTargetValue;
-
                     let updatedButtonValues = displayedCharacters + eventTargetValue;
-                    // if (updatedButtonValues.length>2 && updatedButtonValues.includes('.') &&
-                    // operatorsRegex.test(updatedButtonValues)) {
                     updatedButtonValues = removeExtraDecimalsInStrings(updatedButtonValues);
-                    // } let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
-                    // eventTargetValue == '.' ? displayedCharacters + '.' : displayedCharacters;
                     this.setState({displayedCharacters: updatedButtonValues});
-
                     break;
 
                 case '+':
@@ -178,6 +165,9 @@ class CalculatorContainer extends Component {
 
                 case '(':
                 case ')':
+                    displayedCharacters = displayedCharacters === '0' && eventTargetValue === '('
+                        ? ''
+                        : displayedCharacters;
                     this.setState({
                         displayedCharacters: displayedCharacters + eventTargetValue
                     });
