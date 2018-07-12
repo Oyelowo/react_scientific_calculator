@@ -39,7 +39,7 @@ class CalculatorContainer extends Component {
 
     displayedCharactersHandler = (event) => {
         try {
-            let {displayedCharacters, trigIsDegree} = this.state;
+            let {displayedCharacters, trigIsDegree, calculatorIsOn} = this.state;
 
             const operatorsRegex = /[+-/*%]/;
             let {value: eventTargetValue} = event.target;
@@ -53,7 +53,7 @@ class CalculatorContainer extends Component {
                     ? '%'
                     : eventTargetValue;
 
-            if (event.keyCode) {
+            if (event.keyCode && calculatorIsOn) {
                 eventTargetValue = this.getBtnChar();
             }
 
@@ -290,7 +290,6 @@ class CalculatorContainer extends Component {
                     id={calcKey.id}
                     value={calcKey.btnCharacter}/></span>
         ));
-
 
         // change font size of display dynamicaly. if there is error, make it smaller,
         // so, it can e big enough to contain the error messages, otherwise, keep the

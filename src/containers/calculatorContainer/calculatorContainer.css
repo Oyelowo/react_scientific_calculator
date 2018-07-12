@@ -67,8 +67,8 @@ input.button:active, .extraKeys button{
     opacity: 0.9;
 }
 
-#on{
-    background: rgb(0, 0, 219);
+#clear{
+    background: rgb(70, 70, 211);
 }
 
 .button.black {
