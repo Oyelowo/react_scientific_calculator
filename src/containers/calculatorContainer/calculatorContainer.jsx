@@ -8,14 +8,9 @@ class CalculatorContainer extends Component {
         calculatorKeysArray,
         calculatorKeysArrayInverse,
         displayedCharacters: '',
-        prevChar: '',
-        btnChar: '',
-        currentButton: '',
-        latestChar: '',
         trigsAreInverse: false,
         trigIsDegree: true,
         calculatorIsOn: false,
-        result: '',
         error: false
     }
 
@@ -33,7 +28,6 @@ class CalculatorContainer extends Component {
         event = event || window.event;
         let charCode = event.keyCode || event.which;
         let charStr = String.fromCharCode(charCode);
-        this.setState({btnChar: charStr})
         return charStr;
     }
 
