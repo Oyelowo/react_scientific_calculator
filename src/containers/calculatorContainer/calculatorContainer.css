@@ -63,7 +63,7 @@
     /* font-size: 14px; */
 }
 
-input.button:active{
+input.button:active, .extraKeys button{
     background: coral;
     opacity: 0.9;
 }
@@ -101,10 +101,13 @@ input.button:active{
 
 .extraKeys button {
     font-size: 12px;
-    border-radius: 9px;
-    background: black;
+    border-radius: 5px;
+    background: #647489;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     color: white;
     padding: 4px;
+    border: none;
+    cursor: pointer;
 }
 
 .extraKeys button:nth-child(2) {
