@@ -42,11 +42,11 @@ export const removeExtraDecimalsInArrayStr = (oldArray) => {
 }
 
 export const splitStrByOperators = (str) => {
-    return str.split(/[+|-|/|\*]/) || str;
+    return str.split(/[+|-|%|/|\*]/);
 }
 
 export const getAllOperatorsInStr = (str) => {
-    return str.match(/[+|-|/|\*]/g) || removeExtraDecimals(str);
+    return str.match(/[+|-|%|/|\*]/g) || "";
 }
 
 export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
@@ -59,10 +59,20 @@ export const addOperatorsToNumInArray = (numbersArray, operatorsArray) => {
 }
 
 export const removeExtraDecimalsInStrings = (str) => {
-    let numArr = splitStrByOperators(str);
-    let operatorsInArr = getAllOperatorsInStr(str);
-    let extraDecimalsCleanedArr = removeExtraDecimalsInArrayStr(numArr);
-    let addedNumAndOperatorsInArr = addOperatorsToNumInArray(extraDecimalsCleanedArr, operatorsInArr);
+    let addedNumAndOperatorsInArr;
+    let extraDecimalsCleanedArr;
+    let operatorsInArr;
+    let numArr;
+    let operatorsRegex = /[+-/*%]/;
+
+    if (operatorsRegex.test(str)) {
+        numArr = splitStrByOperators(str);
+        operatorsInArr = getAllOperatorsInStr(str);
+        extraDecimalsCleanedArr = removeExtraDecimalsInArrayStr(numArr);
+        addedNumAndOperatorsInArr = addOperatorsToNumInArray(extraDecimalsCleanedArr, operatorsInArr);
+    }else{
+        addedNumAndOperatorsInArr=str;
+    }
     return addedNumAndOperatorsInArr;
 }
 
