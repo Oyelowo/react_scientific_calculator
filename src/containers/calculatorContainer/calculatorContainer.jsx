@@ -22,7 +22,8 @@ class CalculatorContainer extends Component {
         trigsAreInverse: false,
         trigIsDegree: true,
         calculatorIsOn: false,
-        result: ''
+        result: '',
+        error: false
     }
 
     componentDidMount() {
@@ -87,10 +88,10 @@ class CalculatorContainer extends Component {
                     // eventTargetValue=='.'     ? ''     : eventTargetValue;
 
                     let updatedButtonValues = displayedCharacters + eventTargetValue;
-                    // if (updatedButtonValues.length>2 && updatedButtonValues.includes('.') && operatorsRegex.test(updatedButtonValues)) {
-                        updatedButtonValues = removeExtraDecimalsInStrings(updatedButtonValues);
-                    // }
-                    // let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
+                    // if (updatedButtonValues.length>2 && updatedButtonValues.includes('.') &&
+                    // operatorsRegex.test(updatedButtonValues)) {
+                    updatedButtonValues = removeExtraDecimalsInStrings(updatedButtonValues);
+                    // } let updatedDisplayedCharacters = !updatedButtonValues.includes('.') &&
                     // eventTargetValue == '.' ? displayedCharacters + '.' : displayedCharacters;
                     this.setState({displayedCharacters: updatedButtonValues});
 
@@ -266,7 +267,7 @@ class CalculatorContainer extends Component {
 
             }
         } catch (error) {
-            this.setState({displayedCharacters: error, error: true})
+            this.setState({displayedCharacters: error, error: true, calculatorIsOn: false})
         }
     }
 
@@ -301,11 +302,22 @@ class CalculatorContainer extends Component {
                     value={calcKey.btnCharacter}/></span>
         ));
 
+        // change font size of display dynamicaly. if there is error, make it smaller,
+        // so, it can e big enough to contain the error messages, otherwise, keep the
+        // default
+
+        let displayFont = this.state.error
+            ? '17px'
+            : ''
         return (
             <div className='container'>
 
                 <div className='calculatorScreen'>
-                    <div id='display'>
+                    <div
+                        id='display'
+                        style={{
+                        fontSize: displayFont
+                    }}>
                         {this
                             .state
                             .displayedCharacters
