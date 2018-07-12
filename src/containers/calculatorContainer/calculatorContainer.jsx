@@ -64,8 +64,9 @@ class CalculatorContainer extends Component {
                 eventTargetValue = this.getBtnChar();
             }
 
+            // dont allow more than 40 characters in the display
             if (displayedCharacters.length >= 40) {
-                displayedCharacters = displayedCharacters.slice(0, 41);
+                displayedCharacters = displayedCharacters.slice(0, -1);
             }
             switch (eventTargetValue) {
                 case '0':
