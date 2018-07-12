@@ -79,7 +79,7 @@ class CalculatorContainer extends Component {
                 case '9':
                 case '.':
                     // disallow multiple zeros starting
-                    displayedCharacters = displayedCharacters === '0'
+                    displayedCharacters = displayedCharacters === '0' && eventTargetValue != '.'
                         ? ''
                         : displayedCharacters;
 
