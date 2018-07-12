@@ -291,6 +291,7 @@ class CalculatorContainer extends Component {
                     value={calcKey.btnCharacter}/></span>
         ));
 
+
         // change font size of display dynamicaly. if there is error, make it smaller,
         // so, it can e big enough to contain the error messages, otherwise, keep the
         // default
